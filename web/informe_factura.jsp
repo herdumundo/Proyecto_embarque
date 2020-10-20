@@ -29,7 +29,7 @@
         
         String grupomaehara="GrupoMaehara";
         
-       rs = fuente.obtenerDato ("select distinct a.numatcard,a.DocEntry , convert(varchar,a.docdate,103) as fecha ,a.u_cod_camion,c.Name,c.code " +
+       rs = fuente.obtenerDato ("select distinct a.numatcard,a.DocEntry , convert(varchar,a.docdate,103) as fecha ,a.u_cod_camion,c.Name,c.code  " +
             "from oinv a with(nolock) inner join inv1 b with(nolock) on a.DocEntry=b.DocEntry and b.WhsCode='"+area+"'   " +
             "inner join [@CHOFERES] c with(nolock) on a.U_Cod_Chofer=c.Code   " +
             " and a.isIns='Y' and a.InvntSttus='o'  and b.InvntSttus='o'"
@@ -161,7 +161,7 @@
                     </div>
              </div>
              
-                  <input type="button" value="IR A EMBARQUE FACTURA NRO.<%=num_fact%>"  onclick="traer_embarque('<%=camion%>','<%=factura_formato%>','<%=cod_chofer%>','<%=fecha%>' )" class="form-control">
+                  <input type="button" value="IR A EMBARQUE FACTURA NRO.<%=num_fact%>"  onclick="traer_embarque('<%=camion%>','<%=num_fact%>','<%=cod_chofer%>','<%=fecha%>' )" class="form-control">
         </div>
  
         <%} 

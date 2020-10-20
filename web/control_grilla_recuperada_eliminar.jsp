@@ -21,7 +21,7 @@
             String getDBUSERByUserIdSql = "{call pa_embarque_pendientes_eliminar(?,?,?,?)}";
             callableStatement = cn.prepareCall(getDBUSERByUserIdSql);
             callableStatement .setString(   1,  area );
-            callableStatement .setInt(   2,  Integer.parseInt(numero_factura));
+            callableStatement .setInt(   2,  Integer.parseInt(numero_factura.substring(numero_factura.length() - 7)));
             callableStatement .setInt(      3,  id);
             callableStatement.registerOutParameter("mensaje", java.sql.Types.INTEGER);
             callableStatement.execute();

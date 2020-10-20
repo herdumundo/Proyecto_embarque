@@ -50,7 +50,7 @@ function traer_embarque(id_camion,nro_factura,cod_chofer,fecha) {
             validar_factura(nro_factura);
             $('#chkToggle2').bootstrapToggle();
             factura_togle(); 
-            teclado_formateado();
+         //   teclado_formateado();
             cargar_estilo_calendario();
             $('#myTable').bootstrapTable();
            

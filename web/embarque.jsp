@@ -84,7 +84,7 @@
               
                 <span class="input-group-addon">-</span>
   
-            <input type="text"  style="  font-weight: bold"  placeholder="NUMERO DE FACTURA" name="txt_nro_fact" id="txt_nro_fact" onblur="validar_factura($('#txt_nro_fact').val());" class="form-control"   />
+            <input type="text"  style="  font-weight: bold" disabled="disable"  placeholder="NUMERO DE FACTURA" name="txt_nro_fact" id="txt_nro_fact" onblur="validar_factura($('#txt_nro_fact').val());" class="form-control"   />
            
             </div>
             </div>

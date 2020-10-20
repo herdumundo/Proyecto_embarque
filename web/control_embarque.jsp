@@ -32,8 +32,7 @@
              String id_usuario=(String)sesionOk.getAttribute("cod_usuario");
              String nombre_usuario=(String)sesionOk.getAttribute("nombre_usuario");
              String area=(String)sesionOk.getAttribute("area");
-            String num_format="001-010-"+numero_factura;
-            try { 
+             try { 
             cn.setAutoCommit(false);
             int unidad_medida=0;
             int tipo_huevo=0;
@@ -49,7 +48,7 @@
             callableStatement = cn.prepareCall(getDBUSERByUserIdSql);
             callableStatement .setInt(1,Integer.parseInt(cbox_chofer) );
             callableStatement .setInt(2, Integer.parseInt(cbox_camion));
-            callableStatement .setString(3,num_format);
+            callableStatement .setString(3,numero_factura);
             callableStatement .setString(4, area);
             callableStatement .setString(5, nombre_usuario);
             callableStatement .setString(6,  fecha_embarque );

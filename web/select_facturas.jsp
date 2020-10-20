@@ -49,7 +49,7 @@ Connection cn = conexion.crearConexion();
                       + "where      "
                       + " a.DocStatus='o'"
                       + "and b.WhsCode='"+area+"'  "
-                      + "and a.NumAtCard='001-010-"+numero_factura+"'"
+                      + "and a.NumAtCard='"+numero_factura+"'"
                       + "group by ItemCode");
         while(rs.next())
               { 
@@ -67,10 +67,10 @@ Connection cn = conexion.crearConexion();
                     + "case itemcode when 7 then sum(convert(int,(b.Quantity-isnull(b.delivrdqty,0))*12)) else 0 end as 'd'  "
                     + "from oinv a  with(nolock)  inner join inv1 b  with(nolock) on a.DocEntry=b.DocEntry "
                     + "where b.InvntSttus='o'   "
-                    + "and   a.DocStatus='o'and b.WhsCode='"+area+"' and a.NumAtCard='001-010-"+numero_factura+"' group by ItemCode");
+                    + "and   a.DocStatus='o'and b.WhsCode='"+area+"' and a.NumAtCard='"+numero_factura+"' group by ItemCode");
               String total_restante="";
-              while(res_fac_cant.next())
-              { 
+            while(res_fac_cant.next())
+                { 
                   
                                     caja_tipo_G = res_fac_cant.getInt("G");
                                     caja_tipo_J =  res_fac_cant.getInt("j");
@@ -87,7 +87,7 @@ Connection cn = conexion.crearConexion();
                                     total_cajon_b = caja_tipo_B + total_cajon_b;
                                     total_cajon_c = caja_tipo_C + total_cajon_c;
                                     total_cajon_d = caja_tipo_D + total_cajon_d;
-              }
+                }
               
               
             total_restante="A_"+total_cajon_a+",B_"+total_cajon_b+",C_"+total_cajon_c+",D_"+total_cajon_d+",S_"+total_cajon_s+",J_"+total_cajon_j+",G_"+total_cajon_g+"";

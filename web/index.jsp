@@ -114,18 +114,18 @@
         <script src="js/SweetAlert.js"></script>
         <script src="js/swetalert_net.js"></script>
         <script src="js/polyfill.js.js"></script>
-        <script src="js/calculos_grilla.js?v=1.0.5"></script>
-        <script src="js/calculos_grilla_transferencia.js?v=1.0.5"></script>
-        <script src="js/calculos_grilla_transferencia_sub.js?v=1.0.5"></script>
-        <script src="js/embarque.js?v=1.0.5"></script>
-        <script src="js/transferencia.js?v=1.0.5"></script>
-        <script src="js/transferencia_sub.js?v=1.0.5"></script>
-        <script src="js/avisos.js?v=1.0.5"></script>
-        <script src="js/envios_embarques.js?v=1.0.5"></script>
-        <script src="js/envios_transferencia.js?v=1.0.5"></script>
-        <script src="js/envios_transferencia_sub.js?v=1.0.5"></script>    
-        <script src="js/traer_clases.js?v=1.0.5" type="text/javascript"></script>
-        <script src="js/js_embarque.js?v=1.0.5"></script>
+        <script src="js/calculos_grilla.js?v=1.0.6"></script>
+        <script src="js/calculos_grilla_transferencia.js?v=1.0.6"></script>
+        <script src="js/calculos_grilla_transferencia_sub.js?v=1.0.6"></script>
+        <script src="js/embarque.js?v=1.0.6"></script>
+        <script src="js/transferencia.js?v=1.0.6"></script>
+        <script src="js/transferencia_sub.js?v=1.0.6"></script>
+        <script src="js/avisos.js?v=1.0.6"></script>
+        <script src="js/envios_embarques.js?v=1.0.6"></script>
+        <script src="js/envios_transferencia.js?v=1.0.6"></script>
+        <script src="js/envios_transferencia_sub.js?v=1.0.6"></script>    
+        <script src="js/traer_clases.js?v=1.0.6" type="text/javascript"></script>
+        <script src="js/js_embarque.js?v=1.0.6"></script>
 </body>
 
 </html>

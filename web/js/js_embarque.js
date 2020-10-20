@@ -17,7 +17,7 @@
 
 
 function teclado_formateado() {
-    $('#txt_nro_fact').inputmask("[9][9]9999999", {
+  $('#txt_nro_fact').inputmask("[9][9]9999999", {
         numericInput: true,
         "placeholder": "0",
         showMaskOnHover: false,

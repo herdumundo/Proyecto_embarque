@@ -34,7 +34,7 @@
             callableStatement .setInt(      4,  cod_huevo);
             callableStatement .setString(   5,  cod_lote);
             callableStatement .setInt(      6,  carro );
-            callableStatement .setString(   7,  numero_factura);
+            callableStatement .setString(   7,  numero_factura.substring(numero_factura.length() - 7));
             callableStatement .setString(   8,  fecha_puesta);
             callableStatement .setString(   9,  estado_lote);
             callableStatement .setInt(      10, identificador_lote );

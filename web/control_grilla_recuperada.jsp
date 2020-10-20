@@ -7,13 +7,14 @@
 <jsp:useBean id="conexion" class="clases.bdconexion1" scope="page" />
 <jsp:useBean id="fuente" class="clases.fuentedato" scope="page"/>
         <% 
-        
-        Connection cn = conexion.crearConexion();
+         Connection cn = conexion.crearConexion();
         fuente. setConexion(cn);  
         String  numero_factura      = request.getParameter("nro_factura") ;
         String  area                =(String)sesionOk.getAttribute("area_gm");
         int     mensaje             =0;
-        String  sql                 ="exec [select_embarque_lotes_pendientes] @area='"+area+"',@nro_factura='"+numero_factura+"'";
+                int ultimo = Integer.parseInt(numero_factura.substring(numero_factura.length() - 7)) ;
+
+        String  sql                 ="exec [select_embarque_lotes_pendientes] @area='"+area+"',@nro_factura="+ultimo+"";
         String  grilla="";
         try { 
          ResultSet rs = fuente.obtenerDato (sql);
