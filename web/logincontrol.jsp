@@ -31,20 +31,18 @@ String area="";
   if(rs.isBeforeFirst()){
                 while(rs.next())
         {
-            
-            
         String id_usuario = "";
-String area_form="";
-String user_name=rs.getString("usuario");
- String nombre_usu=rs.getString("nombre");
-String clasificadora=rs.getString("clasificadora");
-String cod_usuario=rs.getString("cod_usuario");
+        String area_form="";
+        String user_name=rs.getString("usuario");
+        String nombre_usu=rs.getString("nombre");
+        String clasificadora=rs.getString("clasificadora");
+        String cod_usuario=rs.getString("cod_usuario");
 
-      HttpSession sesionOk = request.getSession();
-      sesionOk.setAttribute("user_name",user_name);
-      sesionOk.setAttribute("id_usuario",rs.getString("password"));
-      sesionOk.setAttribute("nombre_usuario",nombre_usu);
-      sesionOk.setAttribute("clasificadora",clasificadora);
+        HttpSession sesionOk = request.getSession();
+        sesionOk.setAttribute("user_name",user_name);
+        sesionOk.setAttribute("id_usuario",rs.getString("password"));
+        sesionOk.setAttribute("nombre_usuario",nombre_usu);
+        sesionOk.setAttribute("clasificadora",clasificadora);
         sesionOk.setAttribute("cod_usuario",cod_usuario);
        
        
@@ -58,6 +56,11 @@ String cod_usuario=rs.getString("cod_usuario");
         else if (area.equals("H")){
            area_form="CCHH" ;
         }
+        
+        else if (area.equals("C")){
+           area_form="CYO" ;
+        }
+        
         else {
                 area_form="CCHB" ;
                 }
