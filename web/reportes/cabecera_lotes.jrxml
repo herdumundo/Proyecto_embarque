@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eebdf742-893f-4b18-83be-278346d5874a">
-	<property name="ireport.zoom" value="1.7715610000000301"/>
+	<property name="ireport.zoom" value="1.4641000000000248"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
@@ -55,7 +55,7 @@ where id=$P{numero}]]>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="6" isBold="true"/>
 				</textElement>
-				<text><![CDATA[M-FOR-CCH-53]]></text>
+				<text><![CDATA[M-FOR-CYO-34]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="82" y="3" width="22" height="23" forecolor="#000000" uuid="19d22d5f-b5c9-4bd3-a306-981eba08f632"/>
@@ -262,7 +262,7 @@ $F{whscode}.equalsIgnoreCase("CCHB")  ? "CYO-CCHB" :
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="6" isBold="true"/>
 				</textElement>
-				<text><![CDATA[M-FOR-CCH-53]]></text>
+				<text><![CDATA[M-FOR-CYO-34]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="423" y="16" width="104" height="16" forecolor="#000000" uuid="2cd9db75-79a2-48fb-8534-acd0bde47b11"/>
@@ -465,4 +465,18 @@ $F{whscode}.equalsIgnoreCase("CCHH")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS
 			</subreport>
 		</band>
 	</detail>
+	<lastPageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement x="416" y="0" width="33" height="20" uuid="5fec655d-5863-44a9-874e-7aee15977329"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Obs.:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="419" y="19" width="383" height="1" uuid="01c0a692-5270-464b-ae93-74d62dfd4e4f"/>
+			</line>
+		</band>
+	</lastPageFooter>
 </jasperReport>

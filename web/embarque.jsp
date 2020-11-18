@@ -92,71 +92,51 @@
            <div style="display: none" id="div_embarque_carga">
            <div class="form-group">
             <div class="input-group">
-                <input type="number" placeholder="LOTE" name="txt_lote" id="txt_lote" class="form-control" onkeypress="cargar_datos_key();"/>
+            <input type="number" placeholder="LOTE" name="txt_lote" id="txt_lote" class="form-control" onkeypress="cargar_datos_key();"/>
                  
             <span class="input-group-addon">-</span>
             <input type="button" value="INGRESAR" name="btn_ingresar" id="btn_ingresar" onclick="traer_control($('#txt_lote').val(),$('#calendario_embarque').val());" class="form-control btn btn-primary"/>
-
- 
-                
-               
-          </div>
+            </div>
           </div>
        
           <input  type="button" value="REGISTRAR" id="btn_registrar" name="btn_registrar" onclick="  obtener_fila();" class="form-control btn btn-danger example2" />
                 
   
         <br>
-              <input type="text" placeholder="total_a" name="total_a" id="total_a" class="form-control " style="display:none"  />
-            <input type="text" placeholder="total_b" name="total_b" id="total_b" class="form-control"style="display:none"/>
-            <input type="text" placeholder="total_c" name="total_c" id="total_c" class="form-control" style="display:none" />
-            <input type="text" placeholder="total_d" name="to tal_d" id="total_d" class="form-control" style="display:none" />
-            <input type="text" placeholder="total_s" name="total_s" id="total_s" class="form-control" style="display:none"/>
-            <input type="text" placeholder="total_j" name="total_j" id="total_j" class="form-control" style="display:none" />
-            <input type="text" placeholder="total_g" name="total_g" id="total_g" class="form-control" style="display:none"  />
+            <input type="text" placeholder="total_a" name="total_a" id="total_a" class="form-control "  style="display:none"  />
+            <input type="text" placeholder="total_b" name="total_b" id="total_b" class="form-control"   style="display:none"/>
+            <input type="text" placeholder="total_c" name="total_c" id="total_c" class="form-control"   style="display:none" />
+            <input type="text" placeholder="total_d" name="to tal_d" id="total_d" class="form-control"  style="display:none" />
+            <input type="text" placeholder="total_s" name="total_s" id="total_s" class="form-control"   style="display:none"/>
+            <input type="text" placeholder="total_j" name="total_j" id="total_j" class="form-control"   style="display:none" />
+            <input type="text" placeholder="total_g" name="total_g" id="total_g" class="form-control"   style="display:none"  />
             <!-- CAMPOS PARA OBTENER EL TOTAL PENDIENTES DE CADA TIPO DE HUEVO EN LA FACTURA INGRESADA !-->
-            
             <input type="text" placeholder="total_factura_carros" name="total_factura_carros" id="total_factura_carros" class="form-control"  style="display:none"  />
             <!-- SE RECUPERA EL TOTAL EN CARROS DE LA FACTURA !-->
             <input type="text" placeholder="total_carros_grilla" name="total_carros_grilla" id="total_carros_grilla" class="form-control" style="display:none"   />
             <!-- SE RECUPERA EL TOTAL EN CARROS  DE LA GRILLA !-->
-
-        
-        
-        
-        
             <input type="text" placeholder="tipo_grilla" name="tipo_grilla" id="tipo_grilla" class="form-control" style="display:none" />
-           <!-- SE RECUPERA LOS TIPOS DE HUEVOS QUE HAY EN LA GRILLA, EJEMPLO: 1,2,3,4 !-->
-
+            <!-- SE RECUPERA LOS TIPOS DE HUEVOS QUE HAY EN LA GRILLA, EJEMPLO: 1,2,3,4 !-->
             <input type="text" placeholder="resultado" name="resultado" id="resultado" class="form-control"   style="display:none"   />
-            
-            
+        <a style=" font-weight: bold" >TOTAL CARROS</a>
+        <input type="text" style=" display:none"   name="total_cajones" id="total_cajones" value="0"   class="form-control" readonly />
+        <input type="text" style=" font-weight: bold"   name="total_carros" id="total_carros" value="0"   class="form-control" readonly />
+        <div id="carros_div">
 
-
-   <a style=" font-weight: bold" >TOTAL CARROS</a>
-<input type="text" style=" display:none"   name="total_cajones" id="total_cajones" value="0"   class="form-control" readonly />
-<input type="text" style=" font-weight: bold"   name="total_carros" id="total_carros" value="0"   class="form-control" readonly />
-
- 
- 
- 
-    <div id="carros_div">
-
-    <a style=" font-weight: bold" > EN CARROS</a>
+            <a style=" font-weight: bold" > EN CARROS</a>
         <table  id="tabla_carros"   data-row-style="rowStyle"   data-toggle="table" data-click-to-select="true">
-    <thead>
-      <tr>
-    <th style=" font-weight: bold">TIPO A</th>
-    <th style=" font-weight: bold">TIPO B</th>
-    <th style=" font-weight: bold">TIPO C</th>
-    <th style=" font-weight: bold">TIPO D</th>
-    <th style=" font-weight: bold">TIPO J</th>
-    <th style=" font-weight: bold">TIPO S</th>
-     <th style=" font-weight: bold">TIPO G</th>
-      </tr>
-
-    </thead>
-    <tbody>
+        <thead>
+        <tr>
+            <th style=" font-weight: bold">TIPO A</th>
+            <th style=" font-weight: bold">TIPO B</th>
+            <th style=" font-weight: bold">TIPO C</th>
+            <th style=" font-weight: bold">TIPO D</th>
+            <th style=" font-weight: bold">TIPO J</th>
+            <th style=" font-weight: bold">TIPO S</th>
+            <th style=" font-weight: bold">TIPO G</th>
+        </tr>
+        </thead>
+        <tbody>
 
   <tr>
   <td> <input type="text" style=" font-weight: bold"  name="tipo_ca" id="tipo_ca" value="0"   class="form-control" readonly /></td>

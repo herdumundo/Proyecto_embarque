@@ -350,9 +350,6 @@ function obtener_fila() {
  
 if(parseInt(total_carros_factura)===parseInt(total_carros_grilla))
 {
-  
- 
- 
     if (total_a_grilla>fac_a)         
      {aviso_cantidad_mayor('A',(fac_a/360));}
      
@@ -381,34 +378,33 @@ if(parseInt(total_carros_factura)===parseInt(total_carros_grilla))
   
     var filas = document.querySelectorAll("#myTable tbody tr");
     var cod_lote;
+    var cod_carrito;
     var cantidad;
     var tipo_huevo;
     var estado;
     var c = 0;
     var valores = '';
     var tipos = '';
-        var identificador;
+    var identificador;
 
     // recorremos cada una de las filas
-
     filas.forEach(function (e) {
-
-        // obtenemos las columnas de cada fila
+    // obtenemos las columnas de cada fila
         var columnas = e.querySelectorAll("td")
         // obtenemos los valores de la cantidad y importe
-        cod_lote = columnas[0].textContent;
-        cantidad = columnas[4].textContent;
-        tipo_huevo = columnas[3].textContent;
-        estado = columnas[7].textContent;
-        identificador = columnas[8].textContent;
+        cod_lote        = columnas[0].textContent;
+        cod_carrito     = columnas[2].textContent;
+        cantidad        = columnas[4].textContent;
+        tipo_huevo      = columnas[3].textContent;
+        estado          = columnas[7].textContent;
+        identificador   = columnas[8].textContent;
 
-        var arr = cod_lote + '-' + tipo_huevo + '-' + cantidad+ '-' + estado+ '-' + identificador;
+        var arr = cod_lote + '-' + tipo_huevo + '-' + cantidad+ '-' + estado+ '-' + identificador+ '-' + cod_carrito;
         var arr2 =tipo_huevo;
 
         if (c == 0) {
             valores = arr;
             tipos = arr2;
-
         }
         else {
             valores = valores + ',' + arr;
@@ -416,7 +412,6 @@ if(parseInt(total_carros_factura)===parseInt(total_carros_grilla))
             if (tipos.includes(tipo_huevo)) {
             }
             else {
-               
                 tipos = tipos + ',' + arr2;
             }
            

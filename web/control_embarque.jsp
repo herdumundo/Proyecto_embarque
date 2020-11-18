@@ -40,6 +40,7 @@
             String lote="";
             String estado_lote="";
             String valores_coma="";
+            String cod_carrito="";
             
             String[] txt_contenido_grilla_array = resultado.split(","); 
             
@@ -69,9 +70,9 @@
                   cantidad = Integer.parseInt(sub_valores_array[2]);  
                   estado_lote=sub_valores_array[3];
                   identificador= Integer.parseInt(sub_valores_array[4]);  
-                  
-                  ResultSet lote_estado= fuente.obtenerDato("select estado from lotes with(nolock) where cod_lote='"+lote+"' ");
-            String call_detalle = "{call pa_embarque_det( ?, ?, ?, ?, ? ,?,?,?,?,? )}";
+                  cod_carrito=sub_valores_array[5];
+                  //ResultSet lote_estado= fuente.obtenerDato("select estado from lotes with(nolock) where cod_lote='"+lote+"' ");
+            String call_detalle = "{call pa_embarque_det( ?, ?, ?, ?, ? ,?,?,?,?,?,? )}";
             callableStatement = cn.prepareCall(call_detalle);
             callableStatement .setInt(1,identity);
             callableStatement .setInt(2, tipo_huevo);
@@ -79,6 +80,7 @@
             callableStatement .setInt(4, cantidad);
             callableStatement .setString(5, estado_lote);     
             callableStatement .setInt(6, identificador);
+            callableStatement .setString(7, cod_carrito);     
 
             callableStatement.registerOutParameter("mensaje", java.sql.Types.INTEGER);
             callableStatement.registerOutParameter("out_cod_lote", java.sql.Types.VARCHAR);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="83081415-c8de-4182-96f3-12c49ab50165">
-	<property name="ireport.zoom" value="2.59374246010003"/>
+	<property name="ireport.zoom" value="1.7715610000000201"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
@@ -8,43 +8,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[DECLARE @t1 table
-(
-    fila int,
-	--indate datetime,
-	indate varchar(10),
-	cantidad int,
-    itemcode varchar(10),
-	carrito varchar(10), 
-	cat varchar(10)
-)
-INSERT INTO @t1
-select dense_rank() over(order by coalesce(min(substring(lote, len(lote)   -13, 8))   ,  a.itemcode)),
-min(convert(date,substring(a.lote, len(lote)   -13, 8))) as indate, (sum(a.cantidad)/-360) as cantidad,
-case a.itemcode when 1 then 'G' when 2 then 'J' when 3 then 'S' when 4 then 'A' when 5 then 'B' when 6 then 'C' else 'D' end as itemcode, 
-substring(a.lote, len(a.lote)   -21, 7) as nro_carrito, substring(a.lote, len(a.lote) - 4, 3)  as cat
-from  
-embarque_det a inner join lotes b on a.lote=b.cod_lote
-where id_cab= $P{numero}
-and a.cantidad <>4320 and a.itemcode not in ('1') and b.codigo_borroso='SI'   and b.estado not in ('E')  
-group by  ItemCode,     substring(a.lote, len(a.lote)   -21, 7),substring(a.lote, len(a.lote) - 4, 3)
-
-union all
-
-select dense_rank() over(order by coalesce(min(substring(a.lote, len(a.lote)   -13, 8)),  a.itemcode)),
-min(convert(date,substring(lote, len(lote)   -13, 8))) as indate, (sum(a.cantidad)/-180) as cantidad,
-case  a.itemcode when 1 then 'G' when 2 then 'J' when 3 then 'S' when 4 then 'A' when 5 then 'B' when 6 then 'C' else 'D' end as itemcode, 
-substring(a.lote, len(a.lote)   -21, 7) as nro_carrito, substring(a.lote, len(a.lote) - 4, 3) as cat
-from
-embarque_det a inner join lotes b on a.lote=b.cod_lote
-where a.id_cab= $P{numero}
-and a.cantidad < 2160 and a.itemcode in ('1')  and b.codigo_borroso='SI' and b.estado not in ('E')  
-group by  ItemCode,     substring(lote, len(lote)   -21, 7), substring(lote, len(lote) - 4, 3)  
-
-SELECT fila, indate, cat, carrito,
-stuff((    SELECT ',    '+ [itemcode]+ convert(varchar, [cantidad]) FROM @t1 
-WHERE carrito=t.carrito and fila = t.fila and indate = t.indate FOR XML PATH('')),1,1,'') as carros
-FROM (SELECT DISTINCT fila, indate, cat, carrito FROM @t1 ) t]]>
+		<![CDATA[exec [rep_embarque_mixto_borroso] @cod_interno=$P{numero}]]>
 	</queryString>
 	<field name="fila" class="java.lang.Integer"/>
 	<field name="indate" class="java.lang.String"/>
@@ -82,7 +46,7 @@ FROM (SELECT DISTINCT fila, indate, cat, carrito FROM @t1 ) t]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="6"/>
 				</textElement>
-				<text><![CDATA[Carros]]></text>
+				<text><![CDATA[CAJONES]]></text>
 			</staticText>
 			<line>
 				<reportElement x="1" y="24" width="801" height="1" uuid="fd21d114-5def-452e-ae69-de4b0606d916"/>
@@ -156,7 +120,7 @@ FROM (SELECT DISTINCT fila, indate, cat, carrito FROM @t1 ) t]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="6"/>
 				</textElement>
-				<text><![CDATA[Carros]]></text>
+				<text><![CDATA[CAJONES]]></text>
 			</staticText>
 			<line>
 				<reportElement x="414" y="0" width="1" height="69" uuid="77cc2e00-3062-465e-be95-56eaff45c5ff"/>

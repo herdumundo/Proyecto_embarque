@@ -7,29 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[DECLARE @t table
-(
-    fila int,
-    --indate datetime,
-	indate varchar(10),
-    itemcode varchar(10),
-    carrito varchar(10), 
-    cat varchar(10)
-)
-INSERT INTO @t
-select dense_rank() over(order by coalesce(substring( a.lote, len(a.lote)   -13, 8),  a.itemcode)),
-convert(date,substring(a.lote, len(a.lote)   -13, 8)) as fecha_puesta, 
-case  a.itemcode when 1 then 'G' when 2 then 'J' when 3 then 'S' when 4 then 'A' when 5 then 'B' when 6 then 'C' else 'D' end as itemcode, 
-substring(a.lote, len(a.lote)   -21, 7) as nro_carrito,  substring(lote, len(a.lote) - 4, 3) as categoria
-from 
-
-embarque_det a inner join lotes b on a.lote=b.cod_lote
-
-where  a.id_cab=$P{numero}  and a.cantidad=4320 and b.codigo_borroso='SI'
- 
-SELECT fila, indate, itemcode, cat,
-stuff((    SELECT [carrito] + '   '  FROM @t WHERE fila = t.fila and indate = t.indate and itemcode = t.itemcode FOR XML PATH('')),1,0,'') as carros
-FROM (SELECT DISTINCT fila, indate, itemcode, cat FROM @t ) t]]>
+		<![CDATA[exec [rep_embarque_carros_borroso] @cod_interno=$P{numero} ]]>
 	</queryString>
 	<field name="fila" class="java.lang.Integer"/>
 	<field name="indate" class="java.lang.String"/>
