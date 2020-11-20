@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="83081415-c8de-4182-96f3-12c49ab50165">
-	<property name="ireport.zoom" value="1.464100000000014"/>
+	<property name="ireport.zoom" value="1.771561000000017"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
@@ -23,28 +23,28 @@
 			<staticText>
 				<reportElement x="3" y="27" width="55" height="20" uuid="d3689d7d-c992-4714-8e2c-f8e303b06cb6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha puesta]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="27" width="51" height="20" uuid="4f8ec095-f486-4726-8436-362d348f8a02"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Categoria]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="114" y="27" width="42" height="20" uuid="20ee2ea5-a532-436a-8c5a-8aabdf1ab73d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="158" y="25" width="200" height="20" uuid="1b5c3d0b-8282-4f32-b25f-0d5404d60103"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CAJONES]]></text>
 			</staticText>
@@ -75,7 +75,7 @@
 			<staticText>
 				<reportElement x="3" y="0" width="355" height="20" uuid="4126d2cf-e27f-4f56-8fd2-2c35f06e3ca2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[CARROS MIXTOS]]></text>
@@ -83,7 +83,7 @@
 			<staticText>
 				<reportElement x="433" y="1" width="358" height="20" uuid="6c5bd478-da00-4638-8b23-4c3f7d210d30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[CARROS MIXTOS]]></text>
@@ -91,21 +91,21 @@
 			<staticText>
 				<reportElement x="420" y="26" width="55" height="20" uuid="0bb3b191-2f1f-4d3a-b1a5-455521ae86e0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha puesta]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="477" y="26" width="47" height="20" uuid="92c0ec09-33b0-47fa-910c-838bdc3e2f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Categoria]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="527" y="25" width="42" height="20" uuid="2f9ad7a7-71ef-4d88-81d9-105560330149"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
@@ -121,7 +121,7 @@
 			<staticText>
 				<reportElement x="571" y="25" width="221" height="20" uuid="1d33b9a9-4606-43b7-8d90-6d8cdd20558f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CAJONES]]></text>
 			</staticText>
@@ -138,33 +138,33 @@
 			<textField pattern="MM/dd/yyyy">
 				<reportElement x="0" y="0" width="55" height="20" uuid="308328b1-b8bd-47a4-a392-a26e327219ca"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{indate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="60" y="0" width="51" height="20" uuid="5488e005-3fb4-47ad-a473-c56f91107c02"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="113" y="0" width="43" height="20" uuid="dbdc56db-728a-4ade-837d-712b8aba484d"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carrito}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="158" y="0" width="200" height="20" uuid="b4ec6473-b14e-4539-8714-1b48475653a6"/>
 				<textElement>
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carros}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="20" width="803" height="1" uuid="15125dec-5403-4d5f-bdd9-4055973dab88"/>
+				<reportElement x="0" y="21" width="803" height="1" uuid="15125dec-5403-4d5f-bdd9-4055973dab88"/>
 			</line>
 			<line>
 				<reportElement x="0" y="-2" width="1" height="23" uuid="b3228b0b-e5cf-442c-aca4-2d28b7d3f3e7"/>
@@ -184,21 +184,21 @@
 			<textField>
 				<reportElement x="528" y="0" width="43" height="20" uuid="cb9fc640-3a71-4018-b6f2-f1667e4602a3"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carrito}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="477" y="0" width="47" height="20" uuid="e5ff9bfd-0ff4-4d14-882b-9cf063ca58a6"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="420" y="1" width="55" height="20" uuid="63d640d5-e1bf-47a0-bf59-910d8cddb75b"/>
 				<textElement textAlignment="Center">
-					<font size="6"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{indate}]]></textFieldExpression>
 			</textField>
@@ -214,7 +214,7 @@
 			<textField>
 				<reportElement x="571" y="0" width="221" height="20" uuid="123cafc2-32c0-447e-b9a4-03942e6468e7"/>
 				<textElement>
-					<font size="6"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carros}]]></textFieldExpression>
 			</textField>

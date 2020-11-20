@@ -17,14 +17,13 @@
             String out_cod_lote="";
             String out_area="";
             String out_numero_fact="";           
-            
             String out_cod_lote_rec="";
             String out_area_rec="";
             String out_numero_fact_rec="";
             Connection cn = conexion.crearConexion();
             fuente.setConexion(cn);  
-             String cbox_chofer= request.getParameter("cbox_chofer") ;
-              String cbox_camion= request.getParameter("cbox_camion") ;
+            String cbox_chofer= request.getParameter("cbox_chofer") ;
+             String cbox_camion= request.getParameter("cbox_camion") ;
              String resultado= request.getParameter("resultado") ;
              String fecha_embarque= request.getParameter("calendario") ;
              String numero_factura = request.getParameter("numero_factura") ;
