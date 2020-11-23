@@ -13,8 +13,7 @@
 <!DOCTYPE html>
 <body>
     <%     
-        
-        
+
            try {
         
  String area =(String) sesionOk.getAttribute("area");

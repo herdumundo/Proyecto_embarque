@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="83081415-c8de-4182-96f3-12c49ab50165">
-	<property name="ireport.zoom" value="1.6105100000000188"/>
+	<property name="ireport.zoom" value="1.2100000000000146"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
@@ -153,7 +153,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="22" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField pattern="MM/dd/yyyy">
 				<reportElement x="0" y="0" width="55" height="20" uuid="308328b1-b8bd-47a4-a392-a26e327219ca"/>
 				<textElement textAlignment="Center">
@@ -175,30 +175,30 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carrito}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement x="158" y="0" width="232" height="20" uuid="b4ec6473-b14e-4539-8714-1b48475653a6"/>
 				<textElement>
-					<font size="8" isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carros}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="20" width="803" height="1" uuid="15125dec-5403-4d5f-bdd9-4055973dab88"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="803" height="1" uuid="15125dec-5403-4d5f-bdd9-4055973dab88"/>
 			</line>
 			<line>
-				<reportElement x="0" y="-2" width="1" height="23" uuid="b3228b0b-e5cf-442c-aca4-2d28b7d3f3e7"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-2" width="1" height="23" uuid="b3228b0b-e5cf-442c-aca4-2d28b7d3f3e7"/>
 			</line>
 			<line>
-				<reportElement x="58" y="-2" width="1" height="23" uuid="b21835ac-ddfa-495d-a884-71653ac96f0e"/>
+				<reportElement positionType="FixRelativeToBottom" x="58" y="-2" width="1" height="23" uuid="b21835ac-ddfa-495d-a884-71653ac96f0e"/>
 			</line>
 			<line>
-				<reportElement x="111" y="-1" width="1" height="22" uuid="b2bed571-aedb-48a4-92e5-a2fd3c9b7d24"/>
+				<reportElement positionType="FixRelativeToBottom" x="111" y="-1" width="1" height="22" uuid="b2bed571-aedb-48a4-92e5-a2fd3c9b7d24"/>
 			</line>
 			<line>
-				<reportElement x="157" y="-2" width="1" height="23" uuid="f059c394-e14a-423a-9d3b-2162911283a0"/>
+				<reportElement positionType="FixRelativeToBottom" x="157" y="-2" width="1" height="23" uuid="f059c394-e14a-423a-9d3b-2162911283a0"/>
 			</line>
 			<line>
-				<reportElement x="802" y="-6" width="1" height="27" uuid="c9e0bde2-b6c3-410d-885c-c4f1da5fbc2d"/>
+				<reportElement positionType="FixRelativeToBottom" x="802" y="-6" width="1" height="27" uuid="c9e0bde2-b6c3-410d-885c-c4f1da5fbc2d"/>
 			</line>
 			<textField>
 				<reportElement x="528" y="0" width="43" height="20" uuid="cb9fc640-3a71-4018-b6f2-f1667e4602a3"/>
@@ -222,35 +222,35 @@
 				<textFieldExpression><![CDATA[$F{indate}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="476" y="-2" width="1" height="23" uuid="6592801b-4595-4194-9f38-7e03ac045333"/>
+				<reportElement positionType="FixRelativeToBottom" x="476" y="-2" width="1" height="23" uuid="6592801b-4595-4194-9f38-7e03ac045333"/>
 			</line>
 			<line>
-				<reportElement x="525" y="-1" width="1" height="22" uuid="ec421245-d227-4b00-baca-dcd8958d52bb"/>
+				<reportElement positionType="FixRelativeToBottom" x="525" y="-1" width="1" height="22" uuid="ec421245-d227-4b00-baca-dcd8958d52bb"/>
 			</line>
 			<line>
-				<reportElement x="570" y="-1" width="1" height="21" uuid="025944d9-509a-451a-89b9-72b0052ed0ff"/>
+				<reportElement positionType="FixRelativeToBottom" x="570" y="-1" width="1" height="21" uuid="025944d9-509a-451a-89b9-72b0052ed0ff"/>
 			</line>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement x="571" y="0" width="231" height="20" uuid="123cafc2-32c0-447e-b9a4-03942e6468e7"/>
 				<textElement>
-					<font size="8" isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carros}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="401" y="-73" width="1" height="94" uuid="3d935197-b512-4f7a-b449-7a32d3fd7e67"/>
+				<reportElement positionType="FixRelativeToBottom" x="401" y="-73" width="1" height="94" uuid="3d935197-b512-4f7a-b449-7a32d3fd7e67"/>
 				<graphicElement>
 					<pen lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="390" y="-74" width="1" height="94" uuid="7b1f08e1-7ddd-49db-83c1-77f8a4ee76f7"/>
+				<reportElement positionType="FixRelativeToBottom" x="390" y="-74" width="1" height="94" uuid="7b1f08e1-7ddd-49db-83c1-77f8a4ee76f7"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="414" y="-1" width="1" height="21" uuid="300cbd3d-af68-48e4-916a-3662e5f66bf8"/>
+				<reportElement positionType="FixRelativeToBottom" x="414" y="-1" width="1" height="21" uuid="300cbd3d-af68-48e4-916a-3662e5f66bf8"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
