@@ -125,7 +125,7 @@
         <script src="js/envios_transferencia.js?v=1.0.7"></script>
         <script src="js/envios_transferencia_sub.js?v=1.0.7"></script>    
         <script src="js/traer_clases.js?v=1.0.7" type="text/javascript"></script>
-        <script src="js/js_embarque.js?v=1.0.8"></script>
+        <script src="js/js_embarque.js?v=1.0.9"></script>
 </body>
 
 </html>

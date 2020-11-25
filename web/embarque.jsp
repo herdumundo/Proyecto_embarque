@@ -99,7 +99,7 @@
             </div>
           </div>
        
-          <input  type="button" value="REGISTRAR" id="btn_registrar" name="btn_registrar" onclick="  obtener_fila();" class="form-control btn btn-danger example2" />
+          <input  type="button" value="REGISTRAR" id="btn_registrar" name="btn_registrar" onclick="  registrar_embarque();" class="form-control btn btn-danger example2" />
                 
   
         <br>

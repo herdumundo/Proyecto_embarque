@@ -1,7 +1,7 @@
 ﻿
 function enviar_pdf(numero) 
 {
-    var url = "http://192.168.6.162:8086/Embarque/reportes/Reporte_embarque.jsp?numero="+numero;
+    var url = "http://192.168.125.20:8086/Embarque/reportes/Reporte_embarque.jsp?numero="+numero;
     window.open(url);
 }
 
@@ -179,7 +179,6 @@ function validar(area, usuario_sap, pass_sap, nombre_usuario) {
     var calendario = $('#calendario_embarque').val();
     var cbox_camion = $('#cbox_camion').val();
     var txt_union_filas = $('#resultado').val();
-    var hora_inicio = $('#hora_inicio').val();
 
     if (cbox_chofer == "-" || calendario == "" || cbox_camion == "-" || txt_union_filas == "") {
         aviso_error();
@@ -287,7 +286,7 @@ function calcular_tipo() {
 
 }
 
-function obtener_fila() {
+function registrar_embarque() {
 
  var cajon_a=$('#tipo_cja').val()*360;
  var carro_a= $('#tipo_ca').val()*4320;
