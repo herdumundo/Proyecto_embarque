@@ -28,40 +28,66 @@
     }
     function cargar_grilla(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador) {
     
+    var contador=0;
+    var contador_duplicados=0;
+    var carros_duplicados="";
 
-    if (checkId(identificador)) {
-        return aviso_duplicado();
-    }
-
-      //  registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador);
+    var table = $('#myTable').DataTable();
+    var data = table.rows({selected:  true}).data();
+        for (var i=0; i < data.length ;i++){
+            if( data[i][8]==identificador ){
+                    contador++;
+                }  
+          /*  if( data[i][2]==nro_carrito &&  data[i][4]==cantidad ){
+                if(contador_duplicados==0){
+                carros_duplicados=nro_carrito;   
+  
+                }
+                else{
+                carros_duplicados=carros_duplicados+","+nro_carrito;   
+   
+                }
+                contador_duplicados++;*/
+            } 
+       // } 
+       /* if(contador_duplicados>0){
+        $( "#div_carros_duplicados" ).html( "<font color='black'><b>TIENE CARROS DUPLICADOS, "+carros_duplicados+" </b></font>" );
+        }*/
+        
+      if(contador==0){
+         registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador);
         $("#myTable").dataTable().fnDestroy(); //DESTRUYE LA FUNCION DE DATATABLE.
         // CLASE SELECTED ELIMINA DEFINITIVAMENTE     
         $('#myTable tbody').append('<tr class="suma "  id="row' +identificador + '" > \n\
         <td class="ocultar">'+cod_lote+'</td>\n\
-        <td>'+tipo+'</td>\n\
-        <td>'+nro_carrito+'</td>\n\
+        <td class="font-weight-bold">'+tipo+'</td>\n\
+        <td class="font-weight-bold">'+nro_carrito+'</td>\n\
         <td class="ocultar">'+item_codigo+'</td>\n\
-        <td>'+cantidad+'</td>\n\
-        <td>'+fecha_puesta+'</td>\n\
-        <td> <input type="button" onclick="eliminar_fila_embarque_pendientes('+identificador+');" value="ELIMINAR" name="remove" id="' + identificador+'"  class="btn btn-danger btn_remove"></td><td>' +estado + '</td>\n\
-        <td for="id">' + identificador + '</td></tr> ');
+        <td class="font-weight-bold">'+cantidad+'</td>\n\
+        <td class="font-weight-bold">'+fecha_puesta+'</td>\n\
+        <td >      <a class="btn btn-danger font-weight-bold" onclick="eliminar_fila_embarque_pendientes('+identificador+');"  > <i class="fa fa-trash-o fa-lg"></i> Eliminar</a>     </td>\n\
+        <td  class="ocultar">' +estado + '</td>\n\
+        <td for="id"  class="ocultar">' + identificador + '</td></tr> ');
         activar_datatable();
+        }
+        
+        else{
+            swal.fire({
+            type: 'error',
+            title: "CODIGO DUPLICADO",
+            confirmButtonText: "CERRAR"
+        });        }
+ 
+       
+
     } 
 
-    function checkId(id) {
-    let ids = document.querySelectorAll('#myTable td[for="id"]');
-
-    return [].filter.call(ids, td => td.textContent === id).length === 1;
-}
 
     function validar_factura(numero) {
 
 if (numero == "") {
-
-
-    }
-
-    else {
+}
+else {
         $.get('select_facturas.jsp', { numero: numero  }, function (res) {
             //$("#contenido_principal").html(res);
            // var resultado = parseInt(res.trim())
@@ -133,17 +159,17 @@ if (numero == "") {
      $('#txt_lote').val(resultado);
  }
  
-    function validar(area, usuario_sap, pass_sap, nombre_usuario) {
+    function validar(datos_grilla) {
     var cbox_chofer = $('#cbox_chofer').val();
     var calendario = $('#calendario_embarque').val();
     var cbox_camion = $('#cbox_camion').val();
     var txt_union_filas = $('#resultado').val();
 
-    if (cbox_chofer == "-" || calendario == "" || cbox_camion == "-" || txt_union_filas == "") {
+    if (cbox_chofer == "-" || calendario == "" || cbox_camion == "-" || datos_grilla.length==0) {
         aviso_error();
     }
     else {
-        confirmar_registro();
+        confirmar_registro(datos_grilla);
 
     }
 
@@ -209,9 +235,9 @@ if (numero == "") {
  var total_carros_factura=  $('#total_factura_carros').val();
  var total_carros_grilla=  $('#total_carros_grilla').val();
  
- 
-/*if(parseInt(total_carros_factura)===parseInt(total_carros_grilla))
-{*/
+ /*
+ if(parseInt(total_carros_factura)===parseInt(total_carros_grilla))
+{ 
     if (total_a_grilla>fac_a)         
      {aviso_cantidad_mayor('A',(fac_a/360));}
      
@@ -232,76 +258,39 @@ if (numero == "") {
   
     else if (total_g_grilla>fac_g)
     {aviso_cantidad_mayor('G',(fac_g/360));}
+ */
  
- 
- else{
-     
+ //else{
      
   
-    var filas = document.querySelectorAll("#myTable tbody tr");
-    var cod_lote;
-    var cod_carrito;
-    var cantidad;
-    var tipo_huevo;
-    var estado;
-    var c = 0;
     var valores = '';
     var tipos = '';
-    var identificador;
-
-    // recorremos cada una de las filas
-  /*  filas.forEach(function (e) {
-    // obtenemos las columnas de cada fila
-        var columnas = e.querySelectorAll("td")
-        // obtenemos los valores de la cantidad y importe
-        cod_lote        = columnas[0].textContent;
-        cod_carrito     = columnas[2].textContent;
-        cantidad        = columnas[4].textContent;
-        tipo_huevo      = columnas[3].textContent;
-        estado          = columnas[7].textContent;
-        identificador   = columnas[8].textContent;
-
-        var arr = cod_lote + '-' + tipo_huevo + '-' + cantidad+ '-' + estado+ '-' + identificador+ '-' + cod_carrito;
-        var arr2 =tipo_huevo;
-
-        if (c == 0) {
-            valores = arr;
-            tipos = arr2;
-        }
-        else {
-            valores = valores + ',' + arr;
-
-            if (tipos.includes(tipo_huevo)) {
+    var table = $('#myTable').DataTable();
+    var data = table.rows({selected:  true}).data();
+    var newarray=[];       
+    var newarray_tipo=[];       
+        for (var i=0; i < data.length ;i++)
+        {
+            newarray.push(data[i][0]+"-"+data[i][2]+"-"+data[i][4]+"-"+data[i][3]+"-"+data[i][7]+"-"+data[i][8]);
+            if (tipos.includes(data[i][3])) {
             }
             else {
-                tipos = tipos + ',' + arr2;
+               newarray_tipo.push(data[i][3]);
+              tipos = newarray_tipo.join();
             }
-           
-        }
-        c++;
-    });*/
-   
-    
-    
-//alert(valores);
-  
-   var table = $('#myTable').DataTable();
- var data = table.rows({selected:  true}).data();
-var newarray=[];       
-        for (var i=0; i < data.length ;i++){
-            newarray.push(data[i][0]+"-"+data[i][2]+"-"+data[i][4]+"-"+data[i][3]+"-"+data[i][7]+"-"+data[i][8]);
          }
- 
-var sData = newarray.join();
- $('#resultado').val(valores);
+      valores = newarray.join();
+    //tipos = newarray_tipo.join();
+      
+    $('#resultado').val(valores);
     $('#tipo_grilla').val(tipos);
-alert(sData);
-   // validar();
- }
- 
+   
+    validar(valores);
+ //}
+ //}
 
-/*}
  
+ /*
   else if (parseInt(total_carros_factura)<parseInt(total_carros_grilla)) {
         swal.fire({
         type:'error',
@@ -318,15 +307,11 @@ alert(sData);
         title: "ERROR, CARROS FALTANTES, FAVOR VERIFICAR",
         confirmButtonText: "CERRAR"
     });
+   }
+*/
     
-      //  alert(total_carros_factura+'  '+total_carros_grilla);
-     
- }
 
- */
- 
-
-}
+    }
 
     function colorear() {
     var inputVal = document.getElementById("txt_nro_fact");
@@ -339,27 +324,66 @@ alert(sData);
     inputVal.style.backgroundColor = "#ffffff";
     }
     
-    ﻿function calcular_tipo_carros() {
+   function calculos_cantidades_grilla() {
+        var total_tipoC = 0;
+        var total_tipoA = 0;
+        var total_tipoB = 0;
+        var total_tipoD = 0;
+        var total_tipoS = 0;
+        var total_tipoG = 0;
+        var total_tipoJ = 0;
  
-    var total_tipoCC = 0;
-    var total_tipoCA = 0;
-    var total_tipoCB = 0;
-    var total_tipoCD = 0;
-    var total_tipoCS = 0;
-    var total_tipoCG = 0;
-    var total_tipoCJ = 0;
- // recorremos cada una de las filas
-    $('#tipo_ca').val('0');
-    $('#tipo_cb').val('0');
-    $('#tipo_cc').val('0');
-    $('#tipo_cd').val('0');
-    $('#tipo_cs').val('0');
-    $('#tipo_cj').val('0');
-    $('#tipo_cg').val('0');
-    
-    var table = $('#myTable').DataTable();
-    var data = table.rows({selected:  true}).data();
-    for (var i=0; i < data.length ;i++){
+        var total_tipoCC = 0;
+        var total_tipoCA = 0;
+        var total_tipoCB = 0;
+        var total_tipoCD = 0;
+        var total_tipoCS = 0;
+        var total_tipoCG = 0;
+        var total_tipoCJ = 0;
+
+        var total_tipoCJC = 0;
+        var total_tipoCJA = 0;
+        var total_tipoCJB = 0;
+        var total_tipoCJD = 0;
+        var total_tipoCJS = 0;
+        var total_tipoCJG = 0;
+        var total_tipoCJJ = 0;
+        
+        $('#tipo_a').val('0');
+        $('#tipo_b').val('0');
+        $('#tipo_c').val('0');
+        $('#tipo_d').val('0');
+        $('#tipo_s').val('0');
+        $('#tipo_j').val('0');
+        $('#tipo_g').val('0');
+
+        $('#tipo_ca').val('0');
+        $('#tipo_cb').val('0');
+        $('#tipo_cc').val('0');
+        $('#tipo_cd').val('0');
+        $('#tipo_cs').val('0');
+        $('#tipo_cj').val('0');
+        $('#tipo_cg').val('0');
+        
+        $('#tipo_cja').val('0');
+        $('#tipo_cjb').val('0');
+        $('#tipo_cjc').val('0');
+        $('#tipo_cjd').val('0');
+        $('#tipo_cjs').val('0');
+        $('#tipo_cjj').val('0');
+        $('#tipo_cjg').val('0');
+        var table = $('#myTable').DataTable();//OBTENEMOS LOS DATOS QUE SE HAN CARGADO EN LA MEMORIA DEL DATATABLE.
+        var data = table.rows({selected:  true}).data();
+        for (var i=0; i < data.length ;i++){
+    // obtenemos los valores de la cantidad y importe
+        var cantidad_tipoC  = parseFloat(data[i][4]);
+        var cantidad_tipoA  = parseFloat(data[i][4]);
+        var cantidad_tipoB  = parseFloat(data[i][4]);
+        var cantidad_tipoG  = parseFloat(data[i][4]);
+        var cantidad_tipoD  = parseFloat(data[i][4]);
+        var cantidad_tipoS  = parseFloat(data[i][4]);
+        var cantidad_tipoJ  = parseFloat(data[i][4]);
+        var tipo            = parseFloat(data[i][3]);  
         var cantidad_tipoCC = parseFloat(data[i][4]);
         var cantidad_tipoCA = parseFloat(data[i][4]);
         var cantidad_tipoCB = parseFloat(data[i][4]);
@@ -368,7 +392,16 @@ alert(sData);
         var cantidad_tipoCJ = parseFloat(data[i][4]);
         var cantidad_tipoCG = parseFloat(data[i][4]);
         var tipo_carro = parseFloat(data[i][3]);   
-         
+        var cantidad_tipoCJC    = parseFloat(data[i][4]);
+        var cantidad_tipoCJA    = parseFloat(data[i][4]);
+        var cantidad_tipoCJB    = parseFloat(data[i][4]);
+        var cantidad_tipoCJD    = parseFloat(data[i][4]);
+        var cantidad_tipoCJS    = parseFloat(data[i][4]);
+        var cantidad_tipoCJJ    = parseFloat(data[i][4]);
+        var cantidad_tipoCJG    = parseFloat(data[i][4]);
+        var tipo_cajon          = parseFloat(data[i][3]);  
+      
+        //BUSCA Y CALCULA CANTIDADES EN CARROS.
         if (tipo_carro == '1' &&  cantidad_tipoCG=="2160") {
             total_tipoCG += cantidad_tipoCG;
             $('#tipo_cg').val(parseInt(total_tipoCG) / 2160);
@@ -376,7 +409,6 @@ alert(sData);
        if (tipo_carro == '2' && cantidad_tipoCJ == "4320") {
             total_tipoCJ += cantidad_tipoCJ;
             $('#tipo_cj').val(parseInt(total_tipoCJ) / 4320);
-
         }
         if (tipo_carro == '3' && cantidad_tipoCS == "4320") {
             total_tipoCS += cantidad_tipoCS;
@@ -390,52 +422,15 @@ alert(sData);
             total_tipoCB += cantidad_tipoCB;
             $('#tipo_cb').val(parseInt(total_tipoCB) / 4320);
         }
-        
-          if (tipo_carro == '6' && cantidad_tipoCC == "4320") {
+        if (tipo_carro == '6' && cantidad_tipoCC == "4320") {
             total_tipoCC += cantidad_tipoCC;
             $('#tipo_cc').val(parseInt(total_tipoCC) / 4320);
-
         }
         if (tipo_carro == '7' && cantidad_tipoCD == "4320") {
             total_tipoCD += cantidad_tipoCD;
             $('#tipo_cd').val(parseInt(total_tipoCD) / 4320);
         }
-      
-    }
-     calcular_tipo_cajones(); 
-}
-
-    function calcular_tipo_cajones() {
-    // obtenemos todas las filas del tbody
-    var total_tipoCJC = 0;
-    var total_tipoCJA = 0;
-    var total_tipoCJB = 0;
-    var total_tipoCJD = 0;
-    var total_tipoCJS = 0;
-    var total_tipoCJG = 0;
-    var total_tipoCJJ = 0;
-    // recorremos cada una de las filas
-    $('#tipo_cja').val('0');
-    $('#tipo_cjb').val('0');
-    $('#tipo_cjc').val('0');
-    $('#tipo_cjd').val('0');
-    $('#tipo_cjs').val('0');
-    $('#tipo_cjj').val('0');
-    $('#tipo_cjg').val('0');
-    
-    var table = $('#myTable').DataTable();
-    var data = table.rows({selected:  true}).data();
-    for (var i=0; i < data.length ;i++){
-         // obtenemos los valores de la cantidad y importe
-        var cantidad_tipoCJC    = parseFloat(data[i][4]);
-        var cantidad_tipoCJA    = parseFloat(data[i][4]);
-        var cantidad_tipoCJB    = parseFloat(data[i][4]);
-        var cantidad_tipoCJD    = parseFloat(data[i][4]);
-        var cantidad_tipoCJS    = parseFloat(data[i][4]);
-        var cantidad_tipoCJJ    = parseFloat(data[i][4]);
-        var cantidad_tipoCJG    = parseFloat(data[i][4]);
-        var tipo_cajon          = parseFloat(data[i][3]);  
-    
+    //COMPARACIONES EN CAJONES  
         if (tipo_cajon == '1' && cantidad_tipoCJG != "2160") {
             total_tipoCJG += cantidad_tipoCJG;
             $('#tipo_cjg').val(parseInt(total_tipoCJG) / 180);
@@ -464,73 +459,46 @@ alert(sData);
             total_tipoCJD += cantidad_tipoCJD;
             $('#tipo_cjd').val(parseInt(total_tipoCJD) / 360);
             }
-    };
-        }
-        
-    function calcular_tipo() {
-            var total_tipoC = 0;
-            var total_tipoA = 0;
-            var total_tipoB = 0;
-            var total_tipoD = 0;
-            var total_tipoS = 0;
-            var total_tipoG = 0;
-            var total_tipoJ = 0;
- 
-            $('#tipo_a').val('0');
-            $('#tipo_b').val('0');
-            $('#tipo_c').val('0');
-            $('#tipo_d').val('0');
-            $('#tipo_s').val('0');
-            $('#tipo_j').val('0');
-            $('#tipo_g').val('0');
-
-            var table = $('#myTable').DataTable();//OBTENEMOS LOS DATOS QUE SE HAN CARGADO EN LA MEMORIA DEL DATATABLE.
-            var data = table.rows({selected:  true}).data();
-            for (var i=0; i < data.length ;i++){
-                 // obtenemos los valores de la cantidad y importe
-                var cantidad_tipoC  = parseFloat(data[i][4]);
-                var cantidad_tipoA  = parseFloat(data[i][4]);
-                var cantidad_tipoB  = parseFloat(data[i][4]);
-                var cantidad_tipoG  = parseFloat(data[i][4]);
-                var cantidad_tipoD  = parseFloat(data[i][4]);
-                var cantidad_tipoS  = parseFloat(data[i][4]);
-                var cantidad_tipoJ  = parseFloat(data[i][4]);
-                var tipo            = parseFloat(data[i][3]);  
-
-                if (tipo == '1') {
-                    total_tipoG += cantidad_tipoG;
-                    $('#tipo_g').val(parseInt(total_tipoG) / 180);
+    //CALCULA CANTIDADES DE TODOS LOS LOTES INGRESADOS, PARA OBTENER EL TOTAL EN CAJONES Y EL TOTAL EN CARROS    
+        if (tipo == '1') {
+            total_tipoG += cantidad_tipoG;
+            $('#tipo_g').val(parseInt(total_tipoG) / 180);
                     }
-                if (tipo == '2') {
-                    total_tipoJ += cantidad_tipoJ;
-                    $('#tipo_j').val(parseInt(total_tipoJ) / 360);
+        if (tipo == '2') {
+            total_tipoJ += cantidad_tipoJ;
+            $('#tipo_j').val(parseInt(total_tipoJ) / 360);
                 }
-                if (tipo == '3') {
-                    total_tipoS += cantidad_tipoS;
-                    $('#tipo_s').val(parseInt(total_tipoS) / 360);
+        if (tipo == '3') {
+            total_tipoS += cantidad_tipoS;
+            $('#tipo_s').val(parseInt(total_tipoS) / 360);
                 }
-                if (tipo == '4') {
-                    total_tipoA += cantidad_tipoA;
-                    $('#tipo_a').val(parseInt(total_tipoA) / 360);
+        if (tipo == '4') {
+            total_tipoA += cantidad_tipoA;
+            $('#tipo_a').val(parseInt(total_tipoA) / 360);
                 }
-                if (tipo == '5') {
-                    total_tipoB += cantidad_tipoB;
-                    $('#tipo_b').val(parseInt(total_tipoB) / 360);
+        if (tipo == '5') {
+            total_tipoB += cantidad_tipoB;
+            $('#tipo_b').val(parseInt(total_tipoB) / 360);
                 }
-                if (tipo == '6') {
-                    total_tipoC += cantidad_tipoC;
-                    $('#tipo_c').val(parseInt(total_tipoC) / 360);
+        if (tipo == '6') {
+            total_tipoC += cantidad_tipoC;
+            $('#tipo_c').val(parseInt(total_tipoC) / 360);
                 }
-                if (tipo == '7') {
-                    total_tipoD += cantidad_tipoD;
-                    $('#tipo_d').val(parseInt(total_tipoD) / 360);
+        if (tipo == '7') {
+            total_tipoD += cantidad_tipoD;
+            $('#tipo_d').val(parseInt(total_tipoD) / 360);
                 }
-            };
-
-            var total = 0; 
-            total = parseInt(total_tipoA) + parseInt(total_tipoB) + parseInt(total_tipoC) + parseInt(total_tipoD) + parseInt(total_tipoS) + parseInt(total_tipoJ) + parseInt(total_tipoG);
-            $('#total_cajones').val(total/ 360);
-            $('#total_carros').val(parseInt(total)/4320);
-            
-            calcular_tipo_carros();
+         } // FIN DEL FOR EACH
+        var total = 0; 
+        total = parseInt(total_tipoA) + parseInt(total_tipoB) + parseInt(total_tipoC) + parseInt(total_tipoD) + parseInt(total_tipoS) + parseInt(total_tipoJ) + parseInt(total_tipoG);
+        $('#total_cajones').val(total/ 360);
+        $('#total_carros').val(parseInt(total)/4320);
     }
+
+      
+            
+            
+            
+  
+        
+       

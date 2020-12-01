@@ -178,8 +178,7 @@
  </tr>
  </tbody>
   </table>
-       
- </div>
+  </div>
     <table  id="tabla_contador" style="display:none"  data-row-style="rowStyle"   data-toggle="table" data-click-to-select="true" class="dataTable">
         <thead>
           <tr>
@@ -205,19 +204,19 @@
       </tbody>
   </table>
 
-      
+        <div id="div_carros_duplicados"></div>     
     <table id="myTable" class="table table-striped table-bordered"  >
         <thead>
         <tr>
             <th class="ocultar" >COD LOTE</th>
             <th>ARTICULO</th>
-            <th>CARRO</th>
+            <th class="idsDeclarados">CARRO</th>
             <th class="ocultar">CODIGO</th>
             <th>CANTIDAD</th>
             <th>FECHA PUESTA</th>
             <th>ACCION</th>
-            <th>ESTADO</th>
-            <th> IDENTIFICADOR</th>
+            <th class="ocultar">ESTADO</th>
+            <th class="ocultar"> IDENTIFICADOR</th>
         </tr>
          </thead>
          <tbody id="tbody_embarque">

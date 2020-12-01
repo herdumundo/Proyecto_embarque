@@ -21,15 +21,14 @@
             {
           grilla=grilla+  "<tr class='suma' id='row"+rs.getString("identificador_lote")+"'  > "
                   + "<td class='ocultar'>"+rs.getString("cod_lote")+"</td>"
-                  + "<td>"+rs.getString("tipo_huevo")+"</td>"
+                  + "<td >"+rs.getString("tipo_huevo")+"</td>"
                   + "<td>"+rs.getString("carro")+"</td>"
                   + "<td class='ocultar' >"+rs.getString("cod_huevo")+"</td>"
-                  + "<td>"+rs.getString("cantidad")+"</td>"
-                  + "<td>"+rs.getString("fecha_puesta")+"</td>"
-                  + "<td> <input type='button' value='ELIMINAR' name='remove' "
-              + "onclick='eliminar_fila_embarque_pendientes("+rs.getString("identificador_lote")+");' id='"+rs.getString("identificador_lote")+"'  class='btn btn-danger'></td>"
-                  + "<td >"+rs.getString("estado_lote")+"</td>"
-                  + "<td for='id'>"+rs.getString("identificador_lote")+"</td>"
+                  + "<td  >"+rs.getString("cantidad")+"</td>"
+                  + "<td >"+rs.getString("fecha_puesta")+"</td>"
+                  + "<td >  <a class='btn btn-danger font-weight-bold'   onclick='eliminar_fila_embarque_pendientes("+rs.getString("identificador_lote")+");' id='"+rs.getString("identificador_lote")+"'> <i class='fa fa-trash-o fa-lg'></i> Eliminar</a>  </td>"
+                  + "<td  class='ocultar' >"+rs.getString("estado_lote")+"</td>"
+                  + "<td for='id'  class='ocultar' >"+rs.getString("identificador_lote")+"</td>  "
                   + "</tr> ";  
                 }  
             } catch (Exception e) 

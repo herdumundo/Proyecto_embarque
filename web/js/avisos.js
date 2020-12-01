@@ -120,7 +120,7 @@ function aviso_duplicado() {
 
 }
 
-function confirmar_registro() {
+function confirmar_registro(datos_grilla) {
     var total = $('#total_cajones').val();
 
     Swal.fire({
@@ -135,7 +135,7 @@ function confirmar_registro() {
     }).then((result) => {
         if (result.value) {
 
-            enviar_datos( $('#cbox_chofer').val(), $('#cbox_camion').val(), $('#resultado').val(), $('#calendario_embarque').val(), $('#txt_nro_fact').val(), $('#hora_inicio').val());
+            enviar_datos( $('#cbox_chofer').val(), $('#cbox_camion').val(), datos_grilla, $('#calendario_embarque').val(), $('#txt_nro_fact').val(), $('#hora_inicio').val());
       
         }
         });

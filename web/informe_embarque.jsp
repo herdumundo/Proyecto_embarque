@@ -29,8 +29,10 @@
         
          
         rs = fuente.obtenerDato (" select a.id, a.area,a.fecha_embarque,a.nro_factura,b.Name as chofer, c.Name as camion "
-                + "from embarque_cab a inner join maehara.dbo.[@CHOFERES] b on a.id_chofer=b.Code "
-                + "inner join maehara.dbo.[@CAMIONES] c on a.id_camion=c.Code where convert(varchar,fecha_embarque,103)='"+fecha+"' and area='"+area+"'");
+                + "from embarque_cab with(nolock) a "
+                + "inner join maehara.dbo.[@CHOFERES] with(nolock) b on a.id_chofer=b.Code "
+                + "inner join maehara.dbo.[@CAMIONES] with(nolock) c on a.id_camion=c.Code "
+                + "where convert(varchar,fecha_embarque,103)='"+fecha+"' and area='"+area+"'");
        
       
 
@@ -80,17 +82,7 @@
         <%} 
              rs.close();
          cn.close();
-        
-        
-   
-        %>
-         
-         
-        
-   
-
- <%     
-        } 
+         } 
     catch (Exception e) {
  String d=e.toString();
 }

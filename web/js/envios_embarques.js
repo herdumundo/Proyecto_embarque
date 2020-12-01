@@ -115,19 +115,19 @@ function llenar_grilla_pendientes(nro_factura){
 function eliminar_fila_embarque_pendientes(id){
       $.get('control_grilla_recuperada_eliminar.jsp', { id:id, nro_factura: $('#txt_nro_fact').val() }, function (res) {
       $(".ocultar").hide();// OCULTA LAS COLUMNAS QUE NO SON NECESARIAS PARA EL USUARIO.
-       }); 
-     $(this).addClass('selected');
+        $(this).addClass('selected');
         var table = $('#myTable').DataTable();
         table.row('#row'+id).remove().draw( false );
-        calcular_tipo();
+        activar_datatable();   
+      
+      }); 
+ 
   }
 
 
 function activar_datatable(){
-    calcular_tipo();
-   
-  
     $(".ocultar").hide(); 
+    $("#myTable").dataTable().fnDestroy(); 
     $('#myTable').DataTable({
         "retrieve": true,
         "scrollX": true,     
@@ -136,7 +136,16 @@ function activar_datatable(){
         "info":     false ,  
        "oLanguage": { "sSearch": "BUSCAR CARRITO: " }  
         });
-    
-}
+    calculos_cantidades_grilla();
 
+    }
+function test (){
+   function existeID(id) {
+    $('.idsDeclarados').each(function () {
+        if ( (this).html() == id)
+            return true;
+    });
+    return false;
+}
+}
   
