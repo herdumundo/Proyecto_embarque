@@ -19,11 +19,10 @@
     String fecha = request.getParameter("calendario");   
     String factura = request.getParameter("factura");  
     String verificador_SAP="0";
-    String sql=" exec [select_lotes_disponibles_embarque] @area='"+area_gm+"',@area_cch='"+area+"',@nro_factura='"+factura+"',@cod_carrito='"+carro+"'";
     JSONObject ob = new JSONObject();
     JSONArray jarray = new JSONArray();
                
-    ResultSet rs_lote = fuente_GM.obtenerDato(sql);
+    ResultSet rs_lote = fuente_GM.obtenerDato(" exec [select_lotes_disponibles_embarque] @area='"+area_gm+"',@area_cch='"+area+"',@nro_factura='"+factura+"',@cod_carrito='"+carro+"'");
                 
         while(rs_lote.next()) 
         {
@@ -58,12 +57,10 @@
             ob.put("cod_interno","0");
             ob.put("mensaje", "1");
         }
-        cn_GM.close();
-        out.print(jarray); 
+            cn_GM.close();
+            out.print(jarray); 
                } 
-    
-    
-        catch (Exception e) 
+           catch (Exception e) 
         {
             JSONObject ob = new JSONObject();
             JSONArray jarray = new JSONArray();

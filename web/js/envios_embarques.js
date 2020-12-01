@@ -52,18 +52,7 @@ function traer_control(id, calendario) {
         url: 'select_lotes.jsp',
         data: ({ id: id, calendario: calendario,factura:$('#txt_nro_fact').val()}),
         beforeSend: function () {
-          /*  Swal.fire({
-        title: 'CONSULTANDO LOTE!',
-        html: '<strong>ESPERE</strong>...',
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading()
-            timerInterval = setInterval(() => {
-                Swal.getContent().querySelector('strong')
-                    .textContent = Swal.getTimerLeft()
-            }, 1000);
-        }
-    });*/
+         
         },
         success: function (data) {
            //  Swal.close();
@@ -118,19 +107,36 @@ function traer_control(id, calendario) {
 
 function llenar_grilla_pendientes(nro_factura){
       $.get('control_grilla_recuperada.jsp', {  nro_factura: nro_factura }, function (res) {
-       $("#tbody_embarque").html(res.grilla);
-        calcular_tipo();
-        calcular_tipo_carros();
-        calcular_tipo_cajones();
-        $(".ocultar").hide();
+      $("#tbody_embarque").html(res.grilla);
+      $(".ocultar").hide(); 
+      activar_datatable();
     });
-    
-   
-}
+  }
 function eliminar_fila_embarque_pendientes(id){
       $.get('control_grilla_recuperada_eliminar.jsp', { id:id, nro_factura: $('#txt_nro_fact').val() }, function (res) {
-         $(".ocultar").hide();
-    });
-    
+      $(".ocultar").hide();// OCULTA LAS COLUMNAS QUE NO SON NECESARIAS PARA EL USUARIO.
+       }); 
+     $(this).addClass('selected');
+        var table = $('#myTable').DataTable();
+        table.row('#row'+id).remove().draw( false );
+        calcular_tipo();
+  }
+
+
+function activar_datatable(){
+    calcular_tipo();
    
+  
+    $(".ocultar").hide(); 
+    $('#myTable').DataTable({
+        "retrieve": true,
+        "scrollX": true,     
+        "paging":   false ,
+        "ordering": true,
+        "info":     false ,  
+       "oLanguage": { "sSearch": "BUSCAR CARRITO: " }  
+        });
+    
 }
+
+  

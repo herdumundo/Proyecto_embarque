@@ -1,7 +1,33 @@
 ﻿
-//$(function () { $('#chkToggle2').bootstrapToggle() });
+    $(document).on('click', '.btn_remove', function () {
+    var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#adicionados").text("");
+    var nFilas = $("#grilla_principal tr").length;
+    $("#adicionados").append(nFilas - 1);
+    calcular_tipo_t();
+    calcular_tipo_carros_t();
+    calcular_tipo_cajones_t();
+    // obtener_fila();     
+});
 
- function factura_togle() {
+    $(document).on('click', '.btn_remove', function () {
+    var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#adicionados").text("");
+    var nFilas = $("#myTable tr").length;
+    $("#adicionados").append(nFilas - 1);
+    calcular_tipo();
+    calcular_tipo_carros();
+    calcular_tipo_cajones();
+    // obtener_fila();     
+});
+
+    function factura_togle() {
 
     $('#chkToggle2').change(function () {
         if ($(this).prop("checked") == true) {
@@ -16,7 +42,7 @@
 };
 
 
-function teclado_formateado() {
+    function teclado_formateado() {
   $('#txt_nro_fact').inputmask("[9][9]9999999", {
         numericInput: true,
         "placeholder": "0",
@@ -24,35 +50,8 @@ function teclado_formateado() {
         greedy: false
     });
 }
-     $(document).on('click', '.btn_remove', function () {
-    var button_id = $(this).attr("id");
-    //cuando da click obtenemos el id del boton
-    $('#row' + button_id + '').remove(); //borra la fila
-    //limpia el para que vuelva a contar las filas de la tabla
-    $("#adicionados").text("");
-    var nFilas = $("#grilla_principal tr").length;
-    $("#adicionados").append(nFilas - 1);
-    calcular_tipo_t();
-    calcular_tipo_carros_t();
-    calcular_tipo_cajones_t();
-    // obtener_fila();     
-});
 
-$(document).on('click', '.btn_remove', function () {
-    var button_id = $(this).attr("id");
-    //cuando da click obtenemos el id del boton
-    $('#row' + button_id + '').remove(); //borra la fila
-    //limpia el para que vuelva a contar las filas de la tabla
-    $("#adicionados").text("");
-    var nFilas = $("#myTable tr").length;
-    $("#adicionados").append(nFilas - 1);
-    calcular_tipo();
-    calcular_tipo_carros();
-    calcular_tipo_cajones();
-    // obtener_fila();     
-});
-
-function cargar_estilo_calendario() {
+    function cargar_estilo_calendario() {
 
 
 
@@ -77,22 +76,14 @@ function cargar_estilo_calendario() {
     });
 }
 
-function cargar_datos_key() {
-
- 
-        if (event.keyCode == 13 || event.which == 13) {
-           
+    function cargar_datos_key() {
+         if (event.keyCode == 13 || event.which == 13) {
             traer_control($('#txt_lote').val(), $('#calendario_embarque').val());
-           // $('#txt_lote').val('');
-
-            //contar();
         }
     
 }
-
-
-
-function cargar_datos_key_transferencia() {
+    
+    function cargar_datos_key_transferencia() {
 
 
     if (event.keyCode == 13 || event.which == 13) {

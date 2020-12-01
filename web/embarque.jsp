@@ -178,62 +178,54 @@
  </tr>
  </tbody>
   </table>
-
+       
  </div>
- <table  id="tabla_contador" style="display:none"  data-row-style="rowStyle"   data-toggle="table" data-click-to-select="true">
-    <thead>
-      <tr>
-    <th>TIPO A</th>
-    <th>TIPO B</th>
-    <th>TIPO C</th>
-    <th>TIPO D</th>
-    <th>TIPO J</th>
-    <th>TIPO S</th>
-     <th>TIPO G</th>
-      </tr>
-    </thead>
-    <tbody>
-  <tr>
-  <td> <b><input type="text"  style=" font-weight: bold"   name="tipo_a" id="tipo_a" value="0"   class="form-control" readonly /></b></td>
-  <td> <b><input type="text" style=" font-weight: bold"    name="tipo_b" id="tipo_b" value="0" class="form-control" readonly  /></b></td>
-  <td><b><input type="text"  style=" font-weight: bold"  name="tipo_c" id="tipo_c" value="0"   class="form-control" readonly /></b></td>
-  <td> <b><input type="text" style=" font-weight: bold"  name="tipo_d" id="tipo_d" value="0"  class="form-control"readonly /></b></td>
-  <td> <b><input type="text" style=" font-weight: bold"   name="tipo_j" id="tipo_j" value="0"  class="form-control" readonly  /></b></td>
- <td> <b><input type="text"  style=" font-weight: bold" name="tipo_s" id="tipo_s" value="0"  class="form-control" readonly/></b></td>
-  <td><b> <input type="text" style=" font-weight: bold"  name="tipo_g" id="tipo_g" value="0"  class="form-control" readonly /></b></td>
- </tr>
-  </tbody>
+    <table  id="tabla_contador" style="display:none"  data-row-style="rowStyle"   data-toggle="table" data-click-to-select="true" class="dataTable">
+        <thead>
+          <tr>
+        <th>TIPO A</th>
+        <th>TIPO B</th>
+        <th>TIPO C</th>
+        <th>TIPO D</th>
+        <th>TIPO J</th>
+        <th>TIPO S</th>
+        <th>TIPO G</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td> <b><input type="text"  style=" font-weight: bold"   name="tipo_a" id="tipo_a" value="0"   class="form-control" readonly /></b></td>
+        <td> <b><input type="text" style=" font-weight: bold"    name="tipo_b" id="tipo_b" value="0" class="form-control" readonly  /></b></td>
+        <td><b><input type="text"  style=" font-weight: bold"  name="tipo_c" id="tipo_c" value="0"   class="form-control" readonly /></b></td>
+        <td> <b><input type="text" style=" font-weight: bold"  name="tipo_d" id="tipo_d" value="0"  class="form-control"readonly /></b></td>
+        <td> <b><input type="text" style=" font-weight: bold"   name="tipo_j" id="tipo_j" value="0"  class="form-control" readonly  /></b></td>
+        <td> <b><input type="text"  style=" font-weight: bold" name="tipo_s" id="tipo_s" value="0"  class="form-control" readonly/></b></td>
+        <td><b> <input type="text" style=" font-weight: bold"  name="tipo_g" id="tipo_g" value="0"  class="form-control" readonly /></b></td>
+        </tr>
+      </tbody>
   </table>
 
-<div   class="row" id="divid"  >
-        <div class="col-md-12">
-        <div class="panel panel-primary">
-        <div class="panel-heading" > </div>
-         <table id="myTable" data-row-style="rowStyle" data-toggle="table" data-click-to-select="true">
-    <thead>
-      <tr>
-    <!-- <th class="ocultar">COD LOTE</th>!-->
-    <th class="ocultar" >COD LOTE</th>
-    <th>ARTICULO</th>
-    <th>CARRO</th>
-    <!--  <th class="ocultar">CODIGO</th> !-->
-    <th class="ocultar">CODIGO</th>
-    <th>CANTIDAD</th>
-    <th>FECHA PUESTA</th>
-    <th>ACCION</th>
-    <th>ESTADO</th>
-    <th> IDENTIFICADOR</th>
+      
+    <table id="myTable" class="table table-striped table-bordered"  >
+        <thead>
+        <tr>
+            <th class="ocultar" >COD LOTE</th>
+            <th>ARTICULO</th>
+            <th>CARRO</th>
+            <th class="ocultar">CODIGO</th>
+            <th>CANTIDAD</th>
+            <th>FECHA PUESTA</th>
+            <th>ACCION</th>
+            <th>ESTADO</th>
+            <th> IDENTIFICADOR</th>
+        </tr>
+         </thead>
+         <tbody id="tbody_embarque">
 
-      </tr>
-     </thead>
-     <tbody id="tbody_embarque">
-         
-     </tbody>
-  </table>                      
-       </div> </div> </div> 
-    
-</div>
-</form><br>
+         </tbody>
+    </table>                      
+    </div>
+    </form> 
  
  
 

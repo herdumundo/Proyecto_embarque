@@ -19,17 +19,17 @@
          ResultSet rs = fuente.obtenerDato (sql);
               while (rs.next())
             {
-          grilla=grilla+  "<tr class='suma' id='row"+rs.getString("identificador_lote")+"' > "
-                  + "<td class='ocultar'><b>"+rs.getString("cod_lote")+"</b></td>"
-                  + "<td><b>"+rs.getString("tipo_huevo")+"</b></td>"
-                  + "<td><b>"+rs.getString("carro")+"</b></td>"
-                  + "<td class='ocultar' ><b>"+rs.getString("cod_huevo")+"</b></td>"
-                  + "<td><b>"+rs.getString("cantidad")+"</b></td>"
-                  + "<td><b>"+rs.getString("fecha_puesta")+"</b></td>"
+          grilla=grilla+  "<tr class='suma' id='row"+rs.getString("identificador_lote")+"'  > "
+                  + "<td class='ocultar'>"+rs.getString("cod_lote")+"</td>"
+                  + "<td>"+rs.getString("tipo_huevo")+"</td>"
+                  + "<td>"+rs.getString("carro")+"</td>"
+                  + "<td class='ocultar' >"+rs.getString("cod_huevo")+"</td>"
+                  + "<td>"+rs.getString("cantidad")+"</td>"
+                  + "<td>"+rs.getString("fecha_puesta")+"</td>"
                   + "<td> <input type='button' value='ELIMINAR' name='remove' "
-                  + "onclick='eliminar_fila_embarque_pendientes("+rs.getString("identificador_lote")+","+numero_factura+");' id='"+rs.getString("identificador_lote")+"'  class='btn btn-danger btn_remove'></td>"
-                  + "<td ><b>"+rs.getString("estado_lote")+"</b></td>"
-                  + "<td for='id'><b>"+rs.getString("identificador_lote")+"</b></td>"
+              + "onclick='eliminar_fila_embarque_pendientes("+rs.getString("identificador_lote")+");' id='"+rs.getString("identificador_lote")+"'  class='btn btn-danger'></td>"
+                  + "<td >"+rs.getString("estado_lote")+"</td>"
+                  + "<td for='id'>"+rs.getString("identificador_lote")+"</td>"
                   + "</tr> ";  
                 }  
             } catch (Exception e) 

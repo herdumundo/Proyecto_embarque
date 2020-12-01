@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eebdf742-893f-4b18-83be-278346d5874a">
-	<property name="ireport.zoom" value="4.177248169415731"/>
-	<property name="ireport.x" value="1814"/>
+	<property name="ireport.zoom" value="1.9487171000000365"/>
+	<property name="ireport.x" value="243"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String">
@@ -11,14 +11,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select a.id,a.fecha_embarque as docdate ,a.area  as whscode,a.usuario_grupomaehara,b.name   ,c.code + '-' + c.name as camion,usuario_grupomaehara, convert(time,hora_inicio) as hora_inicio , convert(time,hora_fin) as hora_fin
-
-from embarque_cab a 
-inner join maehara.dbo.[@choferes] b on a.id_chofer=b.code 
-inner join maehara.dbo.[@CAMIONES] c on a.id_camion=c.Code
-
-
-where id=$P{numero}]]>
+		<![CDATA[ exec [rep_embarque_cabecera] @cod_interno=$P{numero}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="docdate" class="java.sql.Timestamp"/>
@@ -66,12 +59,13 @@ where id=$P{numero}]]>
 				<text><![CDATA[S.A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="103" y="3" width="214" height="20" forecolor="#000000" uuid="fcf12d3e-305c-448b-a2b3-f60bad219367"/>
+				<reportElement x="103" y="3" width="214" height="30" forecolor="#000000" uuid="fcf12d3e-305c-448b-a2b3-f60bad219367"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[FORMULARIO]]></text>
+				<text><![CDATA[FORMULARIO
+EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="4" y="12" width="98" height="24" forecolor="#000000" uuid="a875f53c-bb5c-4a9b-8d9f-81af337bfb47"/>
@@ -226,6 +220,7 @@ $F{whscode}.equalsIgnoreCase("CCHA")  ? "CYO-CCHA" :
 
 $F{whscode}.equalsIgnoreCase("CCHH")  ? "CYO-CCHH" :
 $F{whscode}.equalsIgnoreCase("CCHB")  ? "CYO-CCHB" :
+$F{whscode}.equalsIgnoreCase("CYO")  ? "DEPOSITO-CYO" :
 
  $F{whscode}
    )]]></textFieldExpression>
@@ -234,12 +229,13 @@ $F{whscode}.equalsIgnoreCase("CCHB")  ? "CYO-CCHB" :
 				<reportElement x="414" y="-1" width="1" height="95" uuid="9ee370cf-49cd-4882-8476-c060ccb0f4af"/>
 			</line>
 			<staticText>
-				<reportElement x="515" y="3" width="214" height="23" forecolor="#000000" uuid="f30ddaf5-8125-4882-ba26-ddce7ed4e26d"/>
+				<reportElement x="515" y="3" width="214" height="30" forecolor="#000000" uuid="f30ddaf5-8125-4882-ba26-ddce7ed4e26d"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[FORMULARIO]]></text>
+				<text><![CDATA[FORMULARIO
+EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="416" y="-4" width="74" height="26" forecolor="#000000" uuid="65b48cd0-6f15-42e4-8ec9-8d35a184a7a3"/>
@@ -391,36 +387,6 @@ $F{whscode}.equalsIgnoreCase("CCHB")  ? "CYO-CCHB" :
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hora_inicio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="105" y="13" width="212" height="20" uuid="c747c818-dd06-45d2-8e23-551f981653cd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[(  $F{whscode}.equalsIgnoreCase("OVO")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-LAVADOS" :
-$F{whscode}.equalsIgnoreCase("CCHA")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-
-$F{whscode}.equalsIgnoreCase("CCHB")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-$F{whscode}.equalsIgnoreCase("CCHH")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-$F{whscode}.equalsIgnoreCase("CYO")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-
- $F{whscode}
-   )]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="517" y="13" width="212" height="20" uuid="c183257b-a708-4899-aab0-fa54fb523e23"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[(  $F{whscode}.equalsIgnoreCase("OVO")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-LAVADOS" :
-$F{whscode}.equalsIgnoreCase("CCHA")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-
-$F{whscode}.equalsIgnoreCase("CCHB")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-$F{whscode}.equalsIgnoreCase("CCHH")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-$F{whscode}.equalsIgnoreCase("CYO")  ? "EMBARQUE DE HUEVOS CLASIFICADOS-FRESCOS" :
-
- $F{whscode}
-   )]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
