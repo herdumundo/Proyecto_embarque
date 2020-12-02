@@ -11,25 +11,12 @@ function aviso(mensaje) {
 }
 
 function aviso_error() {
-
-
-    /*Swal.fire({
-        title: 'ERROR, COMPLETAR DATOS',
-        type: 'error',
-        animation: false,
-        customClass: {
-            popup: 'animated tada'
-        }
-    })*/
-
-    swal.fire({
+     swal.fire({
         type: 'error',
         title: "ERROR, COMPLETAR DATOS ",
         confirmButtonText: "CERRAR"
     });
-    
-    
-}
+ }
 
 
 function aviso_cantidad_mayor(tipo,cantidad) {
@@ -123,20 +110,17 @@ function aviso_duplicado() {
 function confirmar_registro(datos_grilla) {
     var total = $('#total_cajones').val();
 
-    Swal.fire({
-           title: 'REGISTRO DE EMBARQUE TOTAL EN CAJONES:' + total,
-           text: "DESEA REGISTRAR LOS DATOS INGRESADOS?",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-           confirmButtonText: 'SI, REGISTRAR!',
-           cancelButtonText: 'NO, CANCELAR!'
-    }).then((result) => {
+        Swal.fire({
+            title: 'REGISTRO DE EMBARQUE TOTAL EN CAJONES:' + total,
+            text: "DESEA REGISTRAR LOS DATOS INGRESADOS?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'SI, REGISTRAR!',
+            cancelButtonText: 'NO, CANCELAR!' }).then((result) => {
         if (result.value) {
-
-            enviar_datos( $('#cbox_chofer').val(), $('#cbox_camion').val(), datos_grilla, $('#calendario_embarque').val(), $('#txt_nro_fact').val(), $('#hora_inicio').val());
-      
+        control_embarque( $('#cbox_chofer').val(), $('#cbox_camion').val(), datos_grilla, $('#calendario_embarque').val(), $('#txt_nro_fact').val(), $('#hora_inicio').val());
         }
         });
 

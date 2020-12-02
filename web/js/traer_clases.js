@@ -1,14 +1,6 @@
 ﻿
-function login() {
 
-    
-        $(Document).ready(function () {
-            traer_contenedor_menu();
-           no_volver_atras();
-             });
-     
-    
-}
+ 
 
 function no_volver_atras() {
 
@@ -109,25 +101,5 @@ function ir_informe_embarque() {
 
 }
 
-
-
-function MantenSesion() {
-
-    var CONTROLADOR = "MantenSesionHandler.ashx";
-
-    var head = $("head").item(0);
-
-    script = document.createElement("script");
-
-    script.src = CONTROLADOR;
-
-    script.setAttribute('type', 'text / javascript');
-
-    script.defer = true;
-
-    head.appendChild(script);
-
-} 
-
-
+  
 

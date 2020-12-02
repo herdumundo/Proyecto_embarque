@@ -61,15 +61,15 @@
           
               String valor_estado="";
                   for(int i=0; i<txt_contenido_grilla_array.length; i++)
-                  {
+                  {//"600875_20201121_LDO_3- 600875    -4320-  3 -P-   431536"
                   valores_coma=txt_contenido_grilla_array[i];
                   String[] sub_valores_array = valores_coma.split("-"); 
                   lote = sub_valores_array[0];
-                  tipo_huevo = Integer.parseInt(sub_valores_array[1]);
+                  tipo_huevo = Integer.parseInt(sub_valores_array[3]);
                   cantidad = Integer.parseInt(sub_valores_array[2]);  
-                  estado_lote=sub_valores_array[3];
-                  identificador= Integer.parseInt(sub_valores_array[4]);  
-                  cod_carrito=sub_valores_array[5];
+                  estado_lote=sub_valores_array[4];
+                  identificador= Integer.parseInt(sub_valores_array[5]);  
+                  cod_carrito=sub_valores_array[1];
                   //ResultSet lote_estado= fuente.obtenerDato("select estado from lotes with(nolock) where cod_lote='"+lote+"' ");
             String call_detalle = "{call pa_embarque_det( ?, ?, ?, ?, ? ,?,?,?,?,?,? )}";
             callableStatement = cn.prepareCall(call_detalle);

@@ -29,9 +29,9 @@
         
          
         rs = fuente.obtenerDato (" select a.id, a.area,a.fecha_embarque,a.nro_factura,b.Name as chofer, c.Name as camion "
-                + "from embarque_cab with(nolock) a "
-                + "inner join maehara.dbo.[@CHOFERES] with(nolock) b on a.id_chofer=b.Code "
-                + "inner join maehara.dbo.[@CAMIONES] with(nolock) c on a.id_camion=c.Code "
+                + "from embarque_cab   a with(nolock) "
+                + "inner join maehara.dbo.[@CHOFERES]   b with(nolock) on a.id_chofer=b.Code "
+                + "inner join maehara.dbo.[@CAMIONES]  c with(nolock) on a.id_camion=c.Code "
                 + "where convert(varchar,fecha_embarque,103)='"+fecha+"' and area='"+area+"'");
        
       

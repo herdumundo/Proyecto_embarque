@@ -1,83 +1,81 @@
-﻿function enviar_datos(cbox_chofer, cbox_camion, resultado, calendario, numero_factura, hora_inicio) {
-    Swal.fire({
-        title: 'PROCESANDO!',
-        html: 'ESPERE<strong></strong>...',
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading()
-            timerInterval = setInterval(() => {
-                Swal.getContent().querySelector('strong')
-                    .textContent = Swal.getTimerLeft()
-            }, 1000);
-        }
-    }); 
-   // try {
-        $.ajax({
+
+  
+  
+   $(Document).ready(function () {
+    traer_contenedor_menu();
+     no_volver_atras();
+             });
+   
+         
+    function filtrar_listado_embarque(  calendario) {
+        $.get('informe_embarque.jsp', {  calendario: calendario }, function (res) {
+        $("#contenedor_embarque_lista").html(res);
+    });
+    }
+
+    function control_embarque(cbox_chofer, cbox_camion, resultado, calendario, numero_factura, hora_inicio){
+           $.ajax({
             type: "POST",
             url: 'control_embarque.jsp',
+       
             data: ({
                 cbox_chofer: cbox_chofer,
                 cbox_camion: cbox_camion, resultado: resultado, calendario: calendario, numero_factura: numero_factura,
                 hora_inicio: hora_inicio }),
-            //dataType: "html",
+            
+              beforeSend: function() {
+              Swal.fire({
+                title: 'PROCESANDO!',
+                html: 'ESPERE<strong></strong>...',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('strong')
+                            .textContent = Swal.getTimerLeft()   }, 1000);
+                                        }        
+                        });
+                    },           
+            
             success: function (data) 
             {
                 aviso_registro_embarque(data.resultad_final,data.out_cod_lote_rec,data.out_area_rec,data.out_numero_fact_rec,data.nro_embarque);
-                return data;
-            },
-            timeout: 300000,
-            error: function () {
-                aviso_error_conexion();
-            }
-        });
-   
-            
-}  
-
-
-
-
-function filtrar_listado_embarque(  calendario) {
-
-    $.get('informe_embarque.jsp', {  calendario: calendario }, function (res) {
-        $("#contenedor_embarque_lista").html(res);
-    });
-}
-
-
-function traer_control(id, calendario) {
-       
- $.ajax({
-        type: "POST",
-        url: 'select_lotes.jsp',
-        data: ({ id: id, calendario: calendario,factura:$('#txt_nro_fact').val()}),
-        beforeSend: function () {
-         
-        },
-        success: function (data) {
-           //  Swal.close();
-         $.each(data,function(i, item)
-           {  
-        if(item.tipo_mensaje=="0") {
-                    aviso_error_embarque(item.mensaje);
-            }
-        else    {
-            if(item.cod_lote=="0"){
-                aviso_error_carro(item.nro_carrito);
-               }
-            else if(item.estado_liberacion=='R'||item.estado_liberacion=='Z') {
-                aviso_error_carro_retenido();
-               }
-            else {
-                cargar_grilla(item.cod_lote,item.tipo,item.nro_carrito,item.item_codigo,item.cantidad,item.fecha_puesta,item.estado,item.identificador_lote);   
-                    } 
-                }
+                } 
                 });
-        $('#txt_lote').val('');
-       
-         }
-    }); 
-}
+    }
+    function traer_control(id, calendario) 
+    {
+     $.ajax({
+            type: "POST",
+            url: 'select_lotes.jsp',
+            data: ({ id: id, calendario: calendario,factura:$('#txt_nro_fact').val()}),
+            beforeSend: function () {
+
+            },
+            success: function (data) 
+            {
+               //  Swal.close();
+             $.each(data,function(i, item)
+            {  
+            if(item.tipo_mensaje=="0") {
+                aviso_error_embarque(item.mensaje);
+                }
+            else    {
+                if(item.cod_lote=="0"){
+                    aviso_error_carro(item.nro_carrito);
+                   }
+                else if(item.estado_liberacion=='R'||item.estado_liberacion=='Z') {
+                    aviso_error_carro_retenido();
+                   }
+                else {
+                    cargar_grilla(item.cod_lote,item.tipo,item.nro_carrito,item.item_codigo,item.cantidad,item.fecha_puesta,item.estado,item.identificador_lote);   
+                        } 
+                    }
+            });
+            $('#txt_lote').val('');
+            }
+            }); 
+    }
  
  function registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador_lote){
      var numero_factura= $('#txt_nro_fact').val();
@@ -134,18 +132,33 @@ function activar_datatable(){
         "paging":   false ,
         "ordering": true,
         "info":     false ,  
-       "oLanguage": { "sSearch": "BUSCAR CARRITO: " }  
+       "oLanguage": { 
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sSearch":         "Buscar Lote:",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }}  
         });
     calculos_cantidades_grilla();
 
     }
-function test (){
-   function existeID(id) {
-    $('.idsDeclarados').each(function () {
-        if ( (this).html() == id)
-            return true;
-    });
-    return false;
-}
-}
-  
+ 

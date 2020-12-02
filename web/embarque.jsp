@@ -111,7 +111,7 @@
             <input type="text" placeholder="total_j" name="total_j" id="total_j" class="form-control"   style="display:none" />
             <input type="text" placeholder="total_g" name="total_g" id="total_g" class="form-control"   style="display:none"  />
             <!-- CAMPOS PARA OBTENER EL TOTAL PENDIENTES DE CADA TIPO DE HUEVO EN LA FACTURA INGRESADA !-->
-            <input type="text" placeholder="total_factura_carros" name="total_factura_carros" id="total_factura_carros" class="form-control"  style="display:none"  />
+            <input type="hidden" placeholder="total_factura_carros" name="total_factura_carros" id="total_factura_carros" class="form-control"   />
             <!-- SE RECUPERA EL TOTAL EN CARROS DE LA FACTURA !-->
             <input type="text" placeholder="total_carros_grilla" name="total_carros_grilla" id="total_carros_grilla" class="form-control" style="display:none"   />
             <!-- SE RECUPERA EL TOTAL EN CARROS  DE LA GRILLA !-->
