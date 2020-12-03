@@ -21,7 +21,7 @@
          registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador);
         $("#myTable").dataTable().fnDestroy(); //DESTRUYE LA FUNCION DE DATATABLE.
         // CLASE SELECTED ELIMINA DEFINITIVAMENTE     
-        $('#myTable tbody').append('<tr class="suma "  id="row' +identificador + '" > \n\
+        $('#myTable tbody').prepend('<tr class="suma "  id="row' +identificador + '" > \n\
         <td class="ocultar">'+cod_lote+'</td>\n\
         <td class="font-weight-bold">'+tipo+'</td>\n\
         <td class="font-weight-bold">'+nro_carrito+'</td>\n\
@@ -30,7 +30,7 @@
         <td class="font-weight-bold">'+fecha_puesta+'</td>\n\
         <td >      <a class="btn btn-danger font-weight-bold" onclick="eliminar_fila_embarque_pendientes('+identificador+');"  > <i class="fa fa-trash-o fa-lg"></i> Eliminar</a>     </td>\n\
         <td  class="ocultar">' +estado + '</td>\n\
-        <td for="id"  class="ocultar">' + identificador + '</td></tr> ');
+        <td for="id"  class="ocultar">' + identificador + '</td></tr> ') ;
         activar_datatable();
         }
         
@@ -183,7 +183,7 @@
     var newarray_tipo=[];       
         for (var i=0; i < data.length ;i++)
         {
-            newarray.push(data[i][0]+"-"+data[i][2]+"-"+data[i][4]+"-"+data[i][3]+"-"+data[i][7]+"-"+data[i][8]);
+            newarray.push(data[i][0]+"&"+data[i][2]+"&"+data[i][4]+"&"+data[i][3]+"&"+data[i][7]+"&"+data[i][8]+"&"+data[i][5]);
             if (tipos.includes(data[i][3])) {
             }
             else {
@@ -393,7 +393,7 @@
                 }
          } // FIN DEL FOR EACH
         var total = 0; 
-        total = parseInt(total_tipoA) + parseInt(total_tipoB) + parseInt(total_tipoC) + parseInt(total_tipoD) + parseInt(total_tipoS) + parseInt(total_tipoJ) + parseInt(total_tipoG);
+        total = parseInt(total_tipoA) + parseInt(total_tipoB) + parseInt(total_tipoC) + parseInt(total_tipoD) + parseInt(total_tipoS) + parseInt(total_tipoJ) + parseInt(total_tipoG*2);
         $('#total_cajones').val(total/ 360);
         $('#total_carros').val(parseInt(total)/4320);
     }

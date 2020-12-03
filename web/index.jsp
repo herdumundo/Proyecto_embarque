@@ -114,10 +114,10 @@
         <script src="js/SweetAlert.js"></script>
         <script src="js/swetalert_net.js"></script>
         <script src="js/polyfill.js.js"></script>
-        <script src="js/embarque.js?v=1.0.8"></script>
-        <script src="js/avisos.js?v=1.0.8"></script>
-        <script src="js/envios_embarques.js?v=1.0.8"></script>
-        <script src="js/traer_clases.js?v=1.0.8" type="text/javascript"></script>
+        <script src="js/embarque.js?v=1.1.2"></script>
+        <script src="js/avisos.js?v=1.1.2"></script>
+        <script src="js/envios_embarques.js?v=1.1.2"></script>
+        <script src="js/traer_clases.js?v=1.1.2" type="text/javascript"></script>
 </body>
 
 </html>

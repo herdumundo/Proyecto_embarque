@@ -14,6 +14,7 @@
             int identity=0;
             int identificador=0;
             int resultad_final=1;
+            String fecha_puesta="";
             String out_cod_lote="";
             String out_area="";
             String out_numero_fact="";           
@@ -63,15 +64,16 @@
                   for(int i=0; i<txt_contenido_grilla_array.length; i++)
                   {//"600875_20201121_LDO_3- 600875    -4320-  3 -P-   431536"
                   valores_coma=txt_contenido_grilla_array[i];
-                  String[] sub_valores_array = valores_coma.split("-"); 
+                  String[] sub_valores_array = valores_coma.split("&"); 
                   lote = sub_valores_array[0];
                   tipo_huevo = Integer.parseInt(sub_valores_array[3]);
                   cantidad = Integer.parseInt(sub_valores_array[2]);  
                   estado_lote=sub_valores_array[4];
                   identificador= Integer.parseInt(sub_valores_array[5]);  
                   cod_carrito=sub_valores_array[1];
+                  fecha_puesta=sub_valores_array[6];
                   //ResultSet lote_estado= fuente.obtenerDato("select estado from lotes with(nolock) where cod_lote='"+lote+"' ");
-            String call_detalle = "{call pa_embarque_det( ?, ?, ?, ?, ? ,?,?,?,?,?,? )}";
+            String call_detalle = "{call pa_embarque_det( ?, ?, ?, ?, ? ,?,?,?,?,?,?,? )}";
             callableStatement = cn.prepareCall(call_detalle);
             callableStatement .setInt(1,identity);
             callableStatement .setInt(2, tipo_huevo);
@@ -80,6 +82,7 @@
             callableStatement .setString(5, estado_lote);     
             callableStatement .setInt(6, identificador);
             callableStatement .setString(7, cod_carrito);     
+            callableStatement .setString(8, fecha_puesta);     
 
             callableStatement.registerOutParameter("mensaje", java.sql.Types.INTEGER);
             callableStatement.registerOutParameter("out_cod_lote", java.sql.Types.VARCHAR);
@@ -105,7 +108,7 @@
                cn.rollback(); 
             }   
             else {
-                 cn.commit();
+                   cn.commit();
             }
    
        
