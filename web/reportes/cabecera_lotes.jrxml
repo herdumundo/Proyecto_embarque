@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eebdf742-893f-4b18-83be-278346d5874a">
-	<property name="ireport.zoom" value="1.9487171000000365"/>
-	<property name="ireport.x" value="243"/>
+	<property name="ireport.zoom" value="1.3310000000000246"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maehara"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String">
@@ -11,7 +11,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[ exec [rep_embarque_cabecera] @cod_interno=$P{numero}]]>
+		<![CDATA[exec [rep_embarque_cabecera] @cod_interno=$P{numero}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="docdate" class="java.sql.Timestamp"/>
@@ -32,7 +32,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Rev.01]]></text>
+				<text><![CDATA[Rev.00]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="4" y="-4" width="82" height="26" forecolor="#000000" uuid="966acc8d-efb8-4d92-a7da-053672bc21e3"/>
@@ -48,7 +48,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[M-FOR-CYO-34]]></text>
+				<text><![CDATA[M-FOR-CYO-61]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="67" y="1" width="22" height="20" forecolor="#000000" uuid="19d22d5f-b5c9-4bd3-a306-981eba08f632"/>
@@ -59,13 +59,12 @@
 				<text><![CDATA[S.A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="103" y="3" width="214" height="30" forecolor="#000000" uuid="fcf12d3e-305c-448b-a2b3-f60bad219367"/>
+				<reportElement x="103" y="0" width="214" height="33" forecolor="#000000" uuid="fcf12d3e-305c-448b-a2b3-f60bad219367"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[FORMULARIO
-EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
+				<text><![CDATA[EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="4" y="12" width="98" height="24" forecolor="#000000" uuid="a875f53c-bb5c-4a9b-8d9f-81af337bfb47"/>
@@ -229,13 +228,12 @@ $F{whscode}.equalsIgnoreCase("CYO")  ? "DEPOSITO-CYO" :
 				<reportElement x="414" y="-1" width="1" height="95" uuid="9ee370cf-49cd-4882-8476-c060ccb0f4af"/>
 			</line>
 			<staticText>
-				<reportElement x="515" y="3" width="214" height="30" forecolor="#000000" uuid="f30ddaf5-8125-4882-ba26-ddce7ed4e26d"/>
+				<reportElement x="515" y="-1" width="214" height="34" forecolor="#000000" uuid="f30ddaf5-8125-4882-ba26-ddce7ed4e26d"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[FORMULARIO
-EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
+				<text><![CDATA[EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="416" y="-4" width="74" height="26" forecolor="#000000" uuid="65b48cd0-6f15-42e4-8ec9-8d35a184a7a3"/>
@@ -258,7 +256,7 @@ EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[M-FOR-CYO-34]]></text>
+				<text><![CDATA[M-FOR-CYO-61]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="416" y="12" width="98" height="24" forecolor="#000000" uuid="2cd9db75-79a2-48fb-8534-acd0bde47b11"/>
@@ -274,7 +272,7 @@ EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Rev.01]]></text>
+				<text><![CDATA[Rev.00]]></text>
 			</staticText>
 			<line>
 				<reportElement x="728" y="-1" width="1" height="37" uuid="ee650f62-b547-4347-a523-848f5f66b96c"/>
@@ -402,16 +400,6 @@ EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detalle_carros.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
-		<band height="45" splitType="Immediate">
-			<subreport>
-				<reportElement x="0" y="0" width="803" height="42" isRemoveLineWhenBlank="true" uuid="9f2c98b2-1ced-40f5-b83d-39b39383171c"/>
-				<subreportParameter name="numero">
-					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detalle_carros_borroso.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
 		<band height="45">
 			<subreport>
 				<reportElement x="0" y="0" width="803" height="41" isRemoveLineWhenBlank="true" uuid="a89d8ec3-2344-4d9b-862c-cbb53fc8528f"/>
@@ -420,16 +408,6 @@ EMBARQUE DE HUEVOS CLASIFICADOS]]></text>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detalle_mixto.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
-		<band height="60">
-			<subreport>
-				<reportElement x="0" y="-1" width="803" height="58" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="bed047b0-c6d2-40b5-b53c-263d4fb7144d"/>
-				<subreportParameter name="numero">
-					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detalle_mixto_borroso.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

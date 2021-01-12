@@ -48,7 +48,7 @@
         String texto = "";
         String fecha = "";
         String cod_chofer = "";
-      
+        int sum=0;
 
         %>
     <form id="form1">
@@ -162,18 +162,30 @@
              
                   <input type="button" value="IR A EMBARQUE FACTURA NRO.<%=num_fact%>"  onclick="traer_embarque('<%=camion%>','<%=num_fact%>','<%=cod_chofer%>','<%=fecha%>' )" class="form-control">
         </div>
- 
-        <%} 
+    <br><br>
+        <%
+            sum++;
+            } 
              rs.close();
          cn.close();
         
+        if(sum==0){
+
         
+%><div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong><center>NO DISPONE DE EMBARQUES PENDIENTES.</center></strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  <%
+        }
    
         %>
          
          
         
-    </form>
+    </form> 
 
  <%     
         } 
@@ -182,5 +194,5 @@
 }
                  
         %>
-         
+      
  </body>

@@ -1,12 +1,3 @@
-
-  
-  
-   $(Document).ready(function () {
-    traer_contenedor_menu();
-     no_volver_atras();
-             });
-   
-         
     function filtrar_listado_embarque(  calendario) {
         $.get('informe_embarque.jsp', {  calendario: calendario }, function (res) {
         $("#contenedor_embarque_lista").html(res);
@@ -40,6 +31,35 @@
             success: function (data) 
             {
                 aviso_registro_embarque(data.resultad_final,data.out_cod_lote_rec,data.out_area_rec,data.out_numero_fact_rec,data.nro_embarque);
+                } 
+                });
+    }
+    
+    
+    function control_sincronizar_lotes(){
+           $.ajax({
+            type: "POST",
+            url: 'control_sincro_lotes.jsp',
+       
+            data: ({ test: '' }),
+            
+              beforeSend: function() {
+              Swal.fire({
+                title: 'PROCESANDO!',
+                html: 'ESPERE<strong></strong>...',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('strong')
+                            .textContent = Swal.getTimerLeft()   }, 1000);
+                                        }        
+                        });
+                    },           
+            
+            success: function (data) 
+            {
+                aviso_lotes_sincronizados(data.tipo,data.mensaje);
                 } 
                 });
     }
@@ -77,7 +97,7 @@
             }); 
     }
  
- function registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador_lote){
+    function registrar_pendientes(cod_lote,tipo,nro_carrito,item_codigo,cantidad,fecha_puesta,estado,identificador_lote){
      var numero_factura= $('#txt_nro_fact').val();
      $.ajax({
             type: "POST",
@@ -99,39 +119,36 @@
         });
  }
  
- 
- 
- 
-
-function llenar_grilla_pendientes(nro_factura){
-      $.get('control_grilla_recuperada.jsp', {  nro_factura: nro_factura }, function (res) {
-      $("#tbody_embarque").html(res.grilla);
-      $(".ocultar").hide(); 
-      activar_datatable();
-    });
-  }
-function eliminar_fila_embarque_pendientes(id){
-      $.get('control_grilla_recuperada_eliminar.jsp', { id:id, nro_factura: $('#txt_nro_fact').val() }, function (res) {
-      $(".ocultar").hide();// OCULTA LAS COLUMNAS QUE NO SON NECESARIAS PARA EL USUARIO.
-        $(this).addClass('selected');
-        var table = $('#myTable').DataTable();
-        table.row('#row'+id).remove().draw( false );
-        activar_datatable();   
+    function eliminar_fila_embarque_pendientes(){
+        
+       $('.table').on( 'click', '.remove', function () 
+            {   // EN ESTE PROCESO LO QUE SE BUSCA HACER ES, PRIMERO, RECUPERAR EL ID DE LA FILA CLICKEADA PARA LUEGO MANDAR EL ID AL CONTROL ELIMINAR, 
+                //LUEGO ELIMINA LA FILA EN EL DATATABLE.
+                var table = $('#myTable').DataTable();//OBTENGO EL ID DE MI TABLA.
+                var id_carro=table.cell( $(this).closest('tr'), 8 ).data();// OBTENGO EL VALOR DE LA POSICION 8 DE LA FILA SELECCIONADA PARA ELIMINAR, EN ESTE CASO SELECCIONO EL ID DEL LOTE.
+           
+                
+                $.get('control_grilla_recuperada_eliminar.jsp', { id:id_carro, nro_factura: $('#txt_nro_fact').val() }, 
+                function (res) {
       
-      }); 
- 
+                    table.row($('#row'+id_carro)).remove().draw();
+                    calculos_cantidades_grilla();  
+                    }); 
+                
+               
+            });  
+        
   }
 
 
 function activar_datatable(){
-    $(".ocultar").hide(); 
-    $("#myTable").dataTable().fnDestroy(); 
+ 
     $('#myTable').DataTable({
         "retrieve": true,
         "scrollX": true,     
         "paging":   false ,
-        "ordering": false,
-        "info":     false ,  
+        "info":     false 
+        ,  'order' : [[9,'desc']],
        "oLanguage": { 
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -148,16 +165,8 @@ function activar_datatable(){
                 "sLast":     "Último",
                 "sNext":     "Siguiente",
                 "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            },
-            "buttons": {
-                "copy": "Copiar",
-                "colvis": "Visibilidad"
-            }}  
-        });
+            } }  
+        }) ;
     calculos_cantidades_grilla();
 
     }

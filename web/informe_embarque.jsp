@@ -33,12 +33,6 @@
                 + "inner join maehara.dbo.[@CHOFERES]   b with(nolock) on a.id_chofer=b.Code "
                 + "inner join maehara.dbo.[@CAMIONES]  c with(nolock) on a.id_camion=c.Code "
                 + "where convert(varchar,fecha_embarque,103)='"+fecha+"' and area='"+area+"'");
-       
-      
-
-     
-                                        
-                    
             while (rs.next())
             {             
               nro_factura=rs.getString("nro_factura");

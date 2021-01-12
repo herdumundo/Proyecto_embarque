@@ -22,7 +22,8 @@
     JSONObject ob = new JSONObject();
     JSONArray jarray = new JSONArray();
                
-    ResultSet rs_lote = fuente_GM.obtenerDato(" exec [select_lotes_disponibles_embarque] @area='"+area_gm+"',@area_cch='"+area+"',@nro_factura='"+factura+"',@cod_carrito='"+carro+"'");
+   // ResultSet rs_lote = fuente_GM.obtenerDato(" exec [mae_cch_select_lotes_disponibles_embarque] @area='"+area_gm+"',@area_cch='"+area+"',@nro_factura='"+factura+"',@cod_carrito='"+carro+"'");
+    ResultSet rs_lote = fuente_GM.obtenerDato(" exec [mae_cch_select_lotes_disponibles_embarque_test]  @area_cch='"+area+"',@cod_carrito='"+carro+"',@nro_factura='"+factura+"'");
                 
         while(rs_lote.next()) 
         {

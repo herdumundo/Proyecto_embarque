@@ -27,7 +27,8 @@
             callableStatement.execute();
             mensaje = callableStatement.getInt("mensaje");
             cn.commit();
-            } catch (Exception e) 
+            cn.rollback();
+              } catch (Exception e) 
             {
         
           
@@ -36,5 +37,3 @@
         ob=new JSONObject();
         out.print(ob); 
         %>  
-   
- 

@@ -203,7 +203,19 @@
         </tr>
       </tbody>
   </table>
-
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="div_aviso_sincro_espera" >
+  <strong><center>SINCRONIZANDO LOTES DISPONIBLES, FAVOR ESPERE...</center></strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        
+ <div class="alert alert-success alert-dismissible fade show" role="alert" id="div_aviso_sincro" style="display: none" >
+  <strong onclick="sincronizar_lotes()"><center>LOTES SINCRONIZADOS CORRECTAMENTE, SI DESEA VOLVER A ACTUALIZAR LOS LOTES DISPONIBLES PRESIONE AQUI.</center></strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>       
         <div id="div_carros_duplicados"></div>     
     <table id="myTable" class="table table-striped table-bordered"  >
         <thead>
@@ -217,6 +229,7 @@
             <th>ACCION</th>
             <th class="ocultar">ESTADO</th>
             <th class="ocultar"> IDENTIFICADOR</th>
+            <th  > CONTADOR</th>
         </tr>
          </thead>
          <tbody id="tbody_embarque">

@@ -99,8 +99,7 @@
         <script src="js/sb-admin-datatables.min.js"></script>
         <script src="js/sb-admin-charts.min.js"></script>
         <script src="js/alert.js"></script>
-        <script src="js/grilla_2.js"></script>
-        <script src="js/jquery.preloaders.js"></script> 
+         <script src="js/jquery.preloaders.js"></script> 
         <script src="js/combo_buscar.js"></script>
         <script src="js/bootstrap4-toggle.js"></script>
         <script src="js/jquery.inputmask.js"></script>
@@ -114,9 +113,8 @@
         <script src="js/SweetAlert.js"></script>
         <script src="js/swetalert_net.js"></script>
         <script src="js/polyfill.js.js"></script>
-        <script src="js/embarque.js?v=1.1.2"></script>
         <script src="js/avisos.js?v=1.1.2"></script>
-        <script src="js/envios_embarques.js?v=1.1.2"></script>
+        <script src="js/controles_embarques.js?v=1.1.2"></script>
         <script src="js/traer_clases.js?v=1.1.2" type="text/javascript"></script>
 </body>
 

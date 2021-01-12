@@ -127,6 +127,46 @@ function confirmar_registro(datos_grilla) {
      
 }
 
+function sincronizar_lotes(){
+      Swal.fire({
+            title: 'ACTUALIZACION',
+            text: "DESEA SINCRONIZAR LOS LOTES REGISTRADOS.?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'SI, SINCRONIZAR!',
+            cancelButtonText: 'NO, CANCELAR!' }).then((result) => {
+        if (result.value) {
+        control_sincronizar_lotes();
+        }
+        });
+}
+
+
+
+
+function aviso_lotes_sincronizados(tipo,mensaje) {
+    
+    if(tipo==1){
+        Swal.fire({
+        title: mensaje,
+        type: 'success',
+        confirmButtonText: "CERRAR"
+    });   
+    }
+     else {
+        Swal.fire({
+        title: "ERROR",
+        html: mensaje,
+        type: 'error',
+        confirmButtonText: "CERRAR"
+        });     
+     }
+    }
+
+
+
 
 function aviso_registrado_em(numero) {
     
