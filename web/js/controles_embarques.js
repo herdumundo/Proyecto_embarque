@@ -30,7 +30,7 @@
             
             success: function (data) 
             {
-                aviso_registro_embarque(data.resultad_final,data.out_cod_lote_rec,data.out_area_rec,data.out_numero_fact_rec,data.nro_embarque);
+                aviso_registro_embarque(data.resultad_final,data.out_cod_lote_rec,data.out_area_rec,data.out_numero_fact_rec,data.nro_embarque,data.mensaje);
                 } 
                 });
     }

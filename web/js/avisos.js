@@ -191,7 +191,7 @@ function aviso_registrado_em(numero) {
 
 
 
-function aviso_registro_embarque(resultad_final,out_cod_lote_rec,out_area_rec,out_numero_fact_rec,numero) {
+function aviso_registro_embarque(resultad_final,out_cod_lote_rec,out_area_rec,out_numero_fact_rec,numero,mensaje) {
   //  var resultado = parseInt(resultad_final);
     var resultado =  resultad_final ;
 
@@ -199,7 +199,7 @@ function aviso_registro_embarque(resultad_final,out_cod_lote_rec,out_area_rec,ou
     {
  
        Swal.fire({
-        title: "REGISTRADO CON EXITO",
+        title: mensaje,
         text: "DESEA GENERAR EL REPORTE EN PDF?",
         type: 'warning',
         showCancelButton: true,
@@ -215,15 +215,15 @@ function aviso_registro_embarque(resultad_final,out_cod_lote_rec,out_area_rec,ou
               traer_informe_factura();
     }
 
-    else if (resultado == 0) {
-
+    else if (resultado == 0) 
+    {
         swal.fire({
             type: 'error',
-            title: "CARRO NRO. "+out_cod_lote_rec+" INGRESADO EN FACTURA "+out_numero_fact_rec+" PARA EL AREA "+out_area_rec,
+          //  title: "CARRO NRO. "+out_cod_lote_rec+" INGRESADO EN FACTURA "+out_numero_fact_rec+" PARA EL AREA "+out_area_rec,
+            title: mensaje,
             confirmButtonText: "CERRAR"
-        });
-     //   traer_embarque();
-
+                });
+        //   traer_embarque();
     }
 
     else if (resultado == 4) {
@@ -233,15 +233,13 @@ function aviso_registro_embarque(resultad_final,out_cod_lote_rec,out_area_rec,ou
             title: "ERROR, LA CONEXION A LA BASE DE DATOS HA FALLADO, INTENTE DE NUEVO",
             confirmButtonText: "CERRAR"
         });
-
-
     }
     else
     {
         swal.fire
             ({
             type: 'error',
-            title: resultad_final,
+            title: mensaje,
             confirmButtonText: "CERRAR"
             });
             //  traer_embarque();
